@@ -1,14 +1,21 @@
-// import logo from './logo.svg';
-// import './App.css';
-import React from "react";
+import * as React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
+import Ngeong from "./Ngeong";
 import PageSabung from "./PageSabung";
+import Richi from "./Richi";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Navbar/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navbar />}>  
+        <Route index element={<Ngeong />} />
+          <Route path="/Richi" element={<Richi />} />        
+          <Route path="/PageSabung" element={<PageSabung />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

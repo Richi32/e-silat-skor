@@ -1,7 +1,8 @@
-import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 function Navbar() {
   return (
+    <>
     <div>
       {/* Navbar */}
       <nav className="main-header navbar navbar-expand-md navbar-light navbar-white">
@@ -18,8 +19,11 @@ function Navbar() {
           <div className="collapse navbar-collapse order-3" id="navbarCollapse">
             {/* Left navbar links */}
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a href="index3.html" className="nav-link">Home</a>
+              <li className="nav-item">             
+              {/* <a href="" className="nav-link">Home</a>    */}
+                <Link to="/PageSabung">HomeSabung</Link>
+                <Link to="/Ngeong">Ngeong</Link>
+                <Link to="/Richi">Richi</Link>
               </li>
               <li className="nav-item">
                 <a href="#" className="nav-link">Contact</a>
@@ -169,6 +173,8 @@ function Navbar() {
       </nav>
       {/* /.navbar */}
     </div>
+    <Outlet />
+    </>
   );
 }
 
