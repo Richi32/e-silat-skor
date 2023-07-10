@@ -1,20 +1,26 @@
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import Ngeong from "./Ngeong";
-import PageSabung from "./PageSabung";
 import Richi from "./Richi";
+import Login from "./Login";
+import Register from "./Register";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import ListAkun from "./Page_operator_list_akun";
+import ListAcara from "./List_operator_acara";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter>        
       <Routes>
-        <Route path="/" element={<Navbar />}>  
-        <Route index element={<Ngeong />} />
-          <Route path="/Richi" element={<Richi />} />        
-          <Route path="/PageSabung" element={<PageSabung />} />
+        <Route exact path="/" element={<Navbar />}>          
+          <Route path="/Richi" element={<Richi />} />      
+          <Route path="/Login" element={<Login />} />  
+          <Route path="/Register" element={<Register />} />
+          <Route path="/ListAkun" element={<ListAkun />} />
+          <Route path="/ListAcara" element={<ListAcara />} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
