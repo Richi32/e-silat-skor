@@ -7,6 +7,9 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ListAkun from "./Page_operator_list_akun";
 import ListAcara from "./List_operator_acara";
+import NilaiDewan from "./Page_dewan_nilai";
+import NilaiJuri from "./Page_juri_nilai";
+import PapanSkor from "./Page_dewan_skor";
 
 function App() {
   return (
@@ -18,9 +21,12 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/ListAkun" element={<ListAkun />} />
           <Route path="/ListAcara" element={<ListAcara />} />
+          <Route path="/NilaiDewan" element={<NilaiDewan />} />
+          <Route path="/NilaiJuri" element={<NilaiJuri />} />
+          <Route path="/PapanSkor" element={<PapanSkor />} />
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

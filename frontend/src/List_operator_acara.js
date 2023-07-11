@@ -3,6 +3,7 @@ import React from "react";
 function List_operator_acara() {
   return (
     <div>
+      <div className="content-wrapper">
       <section className="content">
         <div className="card">
           <div className="card-header">
@@ -165,6 +166,7 @@ function List_operator_acara() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }

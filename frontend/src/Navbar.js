@@ -33,13 +33,13 @@ function Navbar() {
                 <Link to="/ListAcara" className="nav-link">ListAcara</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/Register" className="nav-link">Register</Link>                
+                <Link to="/NilaiDewan" className="nav-link">NilaiDewan</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/Register" className="nav-link">Register</Link>                
+                <Link to="/NilaiJuri" className="nav-link">NilaiJuri</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/Register" className="nav-link">Register</Link>                
+                <Link to="/PapanSkor" className="nav-link">PapanSkor</Link>                
               </li>
               <li className="nav-item">             
                 <Link to="/Richi" className="nav-link">Richi</Link>
