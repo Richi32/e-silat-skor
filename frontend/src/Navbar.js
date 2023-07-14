@@ -22,28 +22,31 @@ function Navbar() {
             <ul className="navbar-nav">
               <li className="nav-item">             
                 <Link to="/Login" className="nav-link">Login</Link>
+              </li>              
+              <li className="nav-item">                             
+                <Link to="/Akun" className="nav-link">Akun</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/Register" className="nav-link">Register</Link>                
+                <Link to="/Peserta" className="nav-link">Peserta</Link>                
+              </li>              
+              <li className="nav-item">                             
+                <Link to="/Pertandingan" className="nav-link">Pertandingan</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/ListAkun" className="nav-link">ListAkun</Link>                
+                <Link to="/Arena" className="nav-link">Arena</Link>                
+              </li>              
+              <li className="nav-item">                             
+                <Link to="/NilaiDewan" className="nav-link">Nilai Dewan</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/ListAcara" className="nav-link">ListAcara</Link>                
+                <Link to="/NilaiJuri" className="nav-link">Nilai Juri</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/NilaiDewan" className="nav-link">NilaiDewan</Link>                
+                <Link to="/PapanSkor" className="nav-link">Papan Skor</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/NilaiJuri" className="nav-link">NilaiJuri</Link>                
-              </li>
-              <li className="nav-item">                             
-                <Link to="/PapanSkor" className="nav-link">PapanSkor</Link>                
-              </li>
-              <li className="nav-item">             
-                <Link to="/Richi" className="nav-link">Richi</Link>
-              </li>           
+                <Link to="#" className="nav-link">Logout</Link>                
+              </li>     
             </ul>
           </div>          
       {/* /.navbar */}

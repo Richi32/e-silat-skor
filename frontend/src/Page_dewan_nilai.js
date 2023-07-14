@@ -98,7 +98,7 @@ function Page_dewan_nilai() {
 
                     .fixed-bottom-buttons .button-group {
                       display: inline-block;
-                      margin: 0 10px;
+                      margin: 0 10px;                                     
                     }
 
                     .fixed-bottom-buttons .button-group .button {
@@ -115,6 +115,7 @@ function Page_dewan_nilai() {
                     .fixed-bottom-buttons .button-group .button:last-child {
                       margin-bottom: 0;
                     }
+                    
                   `}
                 </style>
 
@@ -128,9 +129,11 @@ function Page_dewan_nilai() {
                     <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Peringatan</button>
                   </div>
                   <div className="button-group">
+                    <button className="button" style={{ backgroundColor: "#008000", color: "white" }}>Vote</button>
                     <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Hapus</button>
                   </div>
                   <div className="button-group">
+                    <button className="button" style={{ backgroundColor: "#008000", color: "white" }}>Vote</button>
                     <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Hapus</button>
                   </div>
                   <div className="button-group">
