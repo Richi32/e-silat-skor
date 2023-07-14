@@ -25,9 +25,9 @@ function Papan_skor() {
                     <td style={{color: 'white', textAlign: 'center', left: 0, right: 0, background: 'linear-gradient(to right, #f00, #00f)'}} className="text-center font-weight-bold" colSpan={10}>MONITOR PENILAIAN KELAS TANDING : A PUTRA DEWASA</td>                                          
                   </tr>
                   <tr>
-                    <td colSpan={4}>JAWA BARAT</td>                      
-                    <td className="text-center col-4 font-weight-bold" colSpan={2}>00:51:49</td>
-                    <td className="text-right" colSpan={4}>JAWA TIMUR</td>
+                    <td className="h1" colSpan={4}>JAWA BARAT</td>                      
+                    <td className="text-center col-4 font-weight-bold h1" colSpan={2}>00:51:49</td>
+                    <td className="text-right h1" colSpan={4}>JAWA TIMUR</td>
                   </tr>
                   <tr>
                     <td className="font-weight-bold" style={{color : 'red'}} colSpan={4}>DONI SAPUTRA</td>                      

@@ -119,30 +119,34 @@ function Page_dewan_nilai() {
                   `}
                 </style>
 
-                <div className="fixed-bottom-buttons container-fluid">
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#ffd900", color: "#000" }}>Jatuhan</button>
-                    <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Binaan</button>
+                <div className="fixed-bottom-buttons container-fluid row">
+                  <div className="col-6">
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-danger btn-lg">Jatuhan</button>
+                      <button className="button btn btn-block bg-gradient-danger btn-lg">Binaan</button>
+                    </div>
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-danger btn-lg">Teguran</button>
+                      <button className="button btn btn-block bg-gradient-danger btn-lg">Peringatan</button>
+                    </div>
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-success btn-lg">Vote</button>
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
+                    </div>
                   </div>
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Teguran</button>
-                    <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Peringatan</button>
-                  </div>
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#008000", color: "white" }}>Vote</button>
-                    <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Hapus</button>
-                  </div>
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#008000", color: "white" }}>Vote</button>
-                    <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Hapus</button>
-                  </div>
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Teguran</button>
-                    <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Peringantan</button>
-                  </div>
-                  <div className="button-group">
-                    <button className="button" style={{ backgroundColor: "#ffd900", color: "#000" }}>Jatuhan</button>
-                    <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Binaan</button>
+                  <div className="col-6">
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Vote</button>
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
+                    </div>
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Teguran</button>
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Peringantan</button>
+                    </div>
+                    <div className="button-group">
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Jatuhan</button>
+                      <button className="button btn btn-block bg-gradient-warning btn-lg">Binaan</button>
+                    </div>
                   </div>
                 </div>
                 <div style={{ marginBottom: "50vh" }}>

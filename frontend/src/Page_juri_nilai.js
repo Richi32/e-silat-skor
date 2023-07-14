@@ -56,13 +56,18 @@ function Page_juri_nilai() {
                       </tbody>
                     </table>
                   </div>
+                  </div>
+              </div>
 
+            </div>
+
+          </div>
+          {/* akhir container fluid */}
                   <style>
-                  {`
+                  {`              
                     .fixed-bottom-buttons {
                       position: fixed;                      
-                      bottom: 20px;                      
-                      text-align: center;
+                      bottom: 20px;                                            
                       padding: 10px 0;
                       background-color: #f1f1f1;                      
                     }
@@ -72,16 +77,7 @@ function Page_juri_nilai() {
                       margin: 0 10px;
                     }
 
-                    .fixed-bottom-buttons .button-group .button {
-                      display: block;
-                      margin: 5px;
-                      font-size: 20px;
-                      padding: 1vw 1vw;
-                      border-radius: 8px;
-                      color: #fff;
-                      border: none;
-                      cursor: pointer;
-                    }
+                    
 
                     .fixed-bottom-buttons .button-group .button:last-child {
                       margin-bottom: 0;
@@ -89,33 +85,37 @@ function Page_juri_nilai() {
                   `}
                 </style>
 
-                  <div className="fixed-bottom-buttons container-fluid">
+                  <div className="fixed-bottom-buttons container-fluid row">
+                    <div className="col-6">
                     <div className="button-group">
-                      <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Tinjuan(1)</button>
-                      <button className="button" style={{ backgroundColor: "#ff0000", color: "white" }}>Tendangan(2)</button>
+                        <button className="button btn btn-block bg-gradient-warning btn-lg d-none">Hapus</button>
+                      </div>
+                      <div className="button-group">
+                        <button className="button btn btn-block bg-gradient-danger btn-lg">Tinjuan(1)</button>
+                        <button className="button btn btn-block bg-gradient-danger btn-lg">Tendangan(2)</button>
+                      </div>
+                      <div className="button-group mt-3">
+                        <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
+                      </div>
                     </div>
-                    <div className="button-group">
-                      <button className="button" style={{ backgroundColor: "#ffd900", color: "black" }}>Hapus</button>
-                    </div>
-                    <div className="button-group">
-                      <button className="button" style={{ backgroundColor: "#ffd900", color: "black" }}>Hapus</button>
-                    </div>
-                    <div className="button-group">
-                      <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Tinjuan(1)</button>
-                      <button className="button" style={{ backgroundColor: "#0400ff", color: "white" }}>Tendangan(2)</button>
+                    <div className="col-6 text-right">
+                      <div className="button-group">
+                        <button className="button btn btn-block bg-gradient-warning btn-lg d-none d-sm-block">Hapus</button>
+                      </div>                      
+                      <div className="button-group">
+                        <button className="button btn btn-block bg-gradient-primary btn-lg">Tinjuan(1)</button>
+                        <button className="button btn btn-block bg-gradient-primary btn-lg">Tendangan(2)</button>
+                      </div>
+                      <div className="button-group mt-3">
+                        <button className="button btn btn-block bg-gradient-warning btn-lg d-block d-sm-none">Hapus</button>
+                      </div>
                     </div>
                   </div>
 
                   <div style={{ marginBottom: "50vh" }}>
 
                 </div>
-
-                </div>
-              </div>
-
-            </div>
-
-          </div>
+                    {/* akhir margin */}                
         </section>
       </div>
     </div>
