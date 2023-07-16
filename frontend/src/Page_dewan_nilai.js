@@ -136,16 +136,16 @@ function Page_dewan_nilai() {
                   </div>
                   <div className="col-6">
                     <div className="button-group">
-                      <button className="button btn btn-block bg-gradient-warning btn-lg">Vote</button>
+                      <button className="button btn btn-block bg-gradient-success btn-lg">Vote</button>
                       <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
                     </div>
                     <div className="button-group">
-                      <button className="button btn btn-block bg-gradient-warning btn-lg">Teguran</button>
-                      <button className="button btn btn-block bg-gradient-warning btn-lg">Peringantan</button>
+                      <button className="button btn btn-block bg-gradient-primary btn-lg">Teguran</button>
+                      <button className="button btn btn-block bg-gradient-primary btn-lg">Peringantan</button>
                     </div>
                     <div className="button-group">
-                      <button className="button btn btn-block bg-gradient-warning btn-lg">Jatuhan</button>
-                      <button className="button btn btn-block bg-gradient-warning btn-lg">Binaan</button>
+                      <button className="button btn btn-block bg-gradient-primary btn-lg">Jatuhan</button>
+                      <button className="button btn btn-block bg-gradient-primary btn-lg">Binaan</button>
                     </div>
                   </div>
                 </div>

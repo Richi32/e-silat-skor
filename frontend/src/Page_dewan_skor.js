@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import Timer from "./Timer";
 function Papan_skor() {
   return (
     <div>
@@ -26,25 +26,11 @@ function Papan_skor() {
                   </tr>
                   <tr>
                     <td className="h1" colSpan={4}>JAWA BARAT</td>                      
-                    <td className="text-center col-4 font-weight-bold h1" colSpan={2}>00:51:49</td>
+                    <td className="text-center col-4 font-weight-bold h1" colSpan={2}><Timer /></td>
                     <td className="text-right h1" colSpan={4}>JAWA TIMUR</td>
                   </tr>
                   <tr>
                     <td className="font-weight-bold" style={{color : 'red'}} colSpan={4}>DONI SAPUTRA</td>                      
-                    <td className="text-center" colSpan={2}>
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-play"></i>
-                      </a>-
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-pause"></i>                        
-                      </a>-
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-stop"></i>                        
-                      </a>-                      
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-sync"></i>                        
-                      </a>
-                    </td>
                     <td className="text-right font-weight-bold" style={{color : 'blue'}} colSpan={4}>GILANG RONA</td>               
                   </tr>
                   </tbody>

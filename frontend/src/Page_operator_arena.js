@@ -22,8 +22,9 @@ function Page_operator_arena() {
             <div className="modal fade" id="modal-default">
               <div className="modal-dialog">
                 <div className="modal-content">
+                <form>
                   <div className="modal-header">
-                    <h4 className="modal-title">Tambah pertandingan</h4>
+                    <h4 className="modal-title">Tambah Arena</h4>
                     <button
                       type="button"
                       className="close"
@@ -33,15 +34,14 @@ function Page_operator_arena() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div className="modal-body">
-                    <p>
-                      Template excel <a href="#">unduh disini</a>
-                    </p>
-                    <p>
-                      pilih excel yang sudah diisi data dan input ke menu dibawah ini
-                    </p>
-                    <input type="file" name="" id="" />
-                  </div>
+                  <div className="modal-body">                     
+                      <div className="card-body">
+                        <div className="form-group">
+                          <label htmlFor="Arena">Arena</label>
+                          <input type="email" className="form-control" id="Arena" />
+                        </div>
+                      </div>
+                    </div>
                   <div className="modal-footer justify-content-between">
                     <button
                       type="button"
@@ -49,11 +49,10 @@ function Page_operator_arena() {
                       data-dismiss="modal"
                     >
                       Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                      tambah
-                    </button>
+                    </button>                    
+                    <button type="submit" className="btn btn-primary">Submit</button>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

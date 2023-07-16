@@ -22,6 +22,7 @@ function Page_operator_pertandingan() {
             <div className="modal fade" id="modal-default">
               <div className="modal-dialog">
                 <div className="modal-content">
+                <form>
                   <div className="modal-header">
                     <h4 className="modal-title">Tambah pertandingan</h4>
                     <button
@@ -33,15 +34,38 @@ function Page_operator_pertandingan() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div className="modal-body">
-                    <p>
-                      Template excel <a href="#">unduh disini</a>
-                    </p>
-                    <p>
-                      pilih excel yang sudah diisi data dan input ke menu dibawah ini
-                    </p>
-                    <input type="file" name="" id="" />
-                  </div>
+                  <div className="modal-body">                     
+                      <div className="card-body">
+                        <div className="form-group">
+                          <label htmlFor="Arena">Arena</label>
+                          <input type="email" className="form-control" id="Arena" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="SudutMerah">Sudut Merah</label>
+                          <input type="email" className="form-control" id="SudutMerah" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="SudutBiru">Sudut Biru</label>
+                          <input type="email" className="form-control" id="SudutBiru" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="Ronde">Ronde</label>
+                          <input type="email" className="form-control" id="Ronde" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="Waktu">Waktu (waktu)</label>
+                          <input type="email" className="form-control" id="Waktu" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="NamaPertandingan">Nama Pertandingan</label>
+                          <input type="email" className="form-control" id="NamaPertandingan" />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="JenisPertandingan">Jenis Pertandingan</label>
+                          <input type="email" className="form-control" id="JenisPertandingan" />
+                        </div>
+                      </div>
+                    </div>
                   <div className="modal-footer justify-content-between">
                     <button
                       type="button"
@@ -49,11 +73,10 @@ function Page_operator_pertandingan() {
                       data-dismiss="modal"
                     >
                       Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                      tambah
-                    </button>
+                    </button>                    
+                    <button type="submit" className="btn btn-primary">Submit</button>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>
