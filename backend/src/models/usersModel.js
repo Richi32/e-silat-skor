@@ -30,10 +30,62 @@ const deleteUser = (id, callback) => {
     db.query(sql, [id], callback);
 };
 
+// Mendapatkan data user berdasarkan username dan password
+const getUserByUsernameAndPassword = (username, password, callback) => {
+    const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
+    db.query(sql, [username, password], (err, results) => {
+        if (err) {
+            callback(err, null);
+            return;
+        }
+
+        if (results.length > 0) {
+            const user = results[0];
+            callback(null, user);
+        } else {
+            callback(null, null);
+        }
+    });
+};
+
+// Mendapatkan data user berdasarkan token
+const getUserByToken = (token, callback) => {
+    const sql = 'SELECT * FROM users WHERE token = ?';
+    db.query(sql, [token], (err, results) => {
+        if (err) {
+            callback(err, null);
+            return;
+        }
+
+        if (results.length > 0) {
+            const user = results[0];
+            callback(null, user);
+        } else {
+            callback(null, null);
+        }
+    });
+};
+
+// Memperbarui token pengguna
+const updateToken = (userId, token, callback) => {
+    const sql = 'UPDATE users SET token = ? WHERE id = ?';
+    db.query(sql, [token, userId], (err, result) => {
+        if (err) {
+            callback(err, null);
+            return;
+        }
+
+        callback(null, result);
+    });
+};
+
 module.exports = {
     getAllUsers,
     getUserById,
     createUser,
     updateUser,
     deleteUser,
+    getUserByUsernameAndPassword,
+    getUserByToken,
+    updateToken
 };
