@@ -6,6 +6,54 @@ function Page_juri_nilai() {
     <div>
       <div className="content-wrapper">
         <section className="content">
+
+{/* modal  biru*/}
+            <div className="modal fade" id="modal-biru">
+              <div className="modal-dialog">
+                <div className="modal-content bg-primary">
+                  <div className="modal-header">
+                    <h4 className="modal-title">Vote</h4>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <button>masuk</button>
+                    <button>tidak masuk</button>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+
+{/* modal  merah*/}
+            <div className="modal fade" id="modal-merah">
+              <div className="modal-dialog">
+                <div className="modal-content bg-danger">
+                  <div className="modal-header">
+                    <h4 className="modal-title">Vote</h4>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <button>masuk</button>
+                    <button>tidak masuk</button>
+                  </div>                  
+                </div>
+              </div>
+            </div>            
+
+
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-12">
