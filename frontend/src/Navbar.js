@@ -42,11 +42,11 @@ function Navbar() {
                 <Link to="/NilaiJuri" className="nav-link">Nilai Juri</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="/PapanSkor" className="nav-link">Papan Skor</Link>                
+                <Link to="/NilaiOperator" className="nav-link">Nilai Operator</Link>                
               </li>
               <li className="nav-item">                             
-                <Link to="#" className="nav-link">Logout</Link>                
-              </li>     
+                <Link to="/PapanSkor" className="nav-link">Papan Skor</Link>                
+              </li>
             </ul>
           </div>          
       {/* /.navbar */}

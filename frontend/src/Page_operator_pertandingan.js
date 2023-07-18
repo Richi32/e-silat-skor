@@ -38,31 +38,31 @@ function Page_operator_pertandingan() {
                       <div className="card-body">
                         <div className="form-group">
                           <label htmlFor="Arena">Arena</label>
-                          <input type="email" className="form-control" id="Arena" />
+                          <input type="text" className="form-control" id="Arena" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="SudutMerah">Sudut Merah</label>
-                          <input type="email" className="form-control" id="SudutMerah" />
+                          <input type="text" className="form-control" id="SudutMerah" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="SudutBiru">Sudut Biru</label>
-                          <input type="email" className="form-control" id="SudutBiru" />
+                          <input type="text" className="form-control" id="SudutBiru" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="Ronde">Ronde</label>
-                          <input type="email" className="form-control" id="Ronde" />
+                          <input type="text" className="form-control" id="Ronde" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="Waktu">Waktu (waktu)</label>
-                          <input type="email" className="form-control" id="Waktu" />
+                          <input type="text" className="form-control" id="Waktu" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="NamaPertandingan">Nama Pertandingan</label>
-                          <input type="email" className="form-control" id="NamaPertandingan" />
+                          <input type="text" className="form-control" id="NamaPertandingan" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="JenisPertandingan">Jenis Pertandingan</label>
-                          <input type="email" className="form-control" id="JenisPertandingan" />
+                          <input type="text" className="form-control" id="JenisPertandingan" />
                         </div>
                       </div>
                     </div>
