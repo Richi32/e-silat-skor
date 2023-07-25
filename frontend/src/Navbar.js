@@ -44,9 +44,6 @@ function Navbar() {
               <li className="nav-item">                             
                 <Link to="/NilaiOperator" className="nav-link">Nilai Operator</Link>                
               </li>
-              <li className="nav-item">                             
-                <Link to="/PapanSkor" className="nav-link">Papan Skor</Link>                
-              </li>
             </ul>
           </div>          
       {/* /.navbar */}

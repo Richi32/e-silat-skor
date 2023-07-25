@@ -14,11 +14,11 @@ import Arena from "./Page_operator_arena";
 import NilaiOperator from "./Page_operator_nilai";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <BrowserRouter>        
-    {window.location.pathname !== '/PapanSkor' && <Navbar />}
-    {/* {!isLoggedIn && <Navbar />} */}
+    {window.location.pathname !== '/PapanSkor'}
+    {!isLoggedIn && <Navbar />}
       <Routes>      
         <Route>          
           <Route exact path="/" element={<PageHome />} />  

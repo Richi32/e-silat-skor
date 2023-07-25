@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Page_operator_pertandingan() {
   return (
@@ -20,7 +21,7 @@ function Page_operator_pertandingan() {
             </h3>
 
             <div className="modal fade" id="modal-default">
-              <div className="modal-dialog">
+              <div className="modal-dialog modal-xl">
                 <div className="modal-content">
                 <form>
                   <div className="modal-header">
@@ -34,8 +35,38 @@ function Page_operator_pertandingan() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div className="modal-body">                     
-                      <div className="card-body">
+                  <div className="modal-body">      
+                    <div className="row">             
+                      <div className="card-body col-12">
+                        <div className="form-group text-center">
+                          <select className="custom-select col-2 mr-1" id="inputGroupSelect01">
+                            <option selected>Kelas</option>
+                            <option value={1}>One</option>
+                            <option value={2}>Two</option>
+                            <option value={3}>Three</option>
+                          </select>
+                          <select className="custom-select col-2" id="inputGroupSelect02">
+                            <option selected>Kategori</option>
+                            <option value={1}>One</option>
+                            <option value={2}>Two</option>
+                            <option value={3}>Three</option>
+                          </select>
+                          <select className="custom-select col-2 ml-1" id="inputGroupSelect03">
+                            <option selected>Jenis Kelamin</option>
+                            <option value={1}>One</option>
+                            <option value={2}>Two</option>
+                            <option value={3}>Three</option>
+                          </select>
+                          <select className="custom-select col-2 ml-1" id="inputGroupSelect03">
+                            <option selected>Ronde</option>
+                            <option value={1}>One</option>
+                            <option value={2}>Two</option>
+                            <option value={3}>Three</option>
+                          </select>
+                        </div>
+                      </div>  
+
+                      <div className="col-6">
                         <div className="form-group">
                           <label htmlFor="Arena">Arena</label>
                           <input type="text" className="form-control" id="Arena" />
@@ -48,10 +79,9 @@ function Page_operator_pertandingan() {
                           <label htmlFor="SudutBiru">Sudut Biru</label>
                           <input type="text" className="form-control" id="SudutBiru" />
                         </div>
-                        <div className="form-group">
-                          <label htmlFor="Ronde">Ronde</label>
-                          <input type="text" className="form-control" id="Ronde" />
-                        </div>
+                      </div>
+
+                      <div className="col-6">  
                         <div className="form-group">
                           <label htmlFor="Waktu">Waktu (waktu)</label>
                           <input type="text" className="form-control" id="Waktu" />
@@ -64,6 +94,7 @@ function Page_operator_pertandingan() {
                           <label htmlFor="JenisPertandingan">Jenis Pertandingan</label>
                           <input type="text" className="form-control" id="JenisPertandingan" />
                         </div>
+                      </div>
                       </div>
                     </div>
                   <div className="modal-footer justify-content-between">
@@ -100,11 +131,11 @@ function Page_operator_pertandingan() {
               </button>
             </div>
           </div>
-          <div className="card-body p-0 table-responsive">
-            <table className="table table-striped projects">
+          <div className="card-body table-responsive">
+            <table className="table table-striped projects" id="table-auto-convert">
                 <thead>
                   <tr>
-                    <th style={{ width: "1%" }} className="text-center">
+                    <th>
                       No
                     </th>
                     <th>
@@ -127,6 +158,9 @@ function Page_operator_pertandingan() {
                     </th>
                     <th>
                       Jenis Pertandingan
+                    </th>
+                    <th>
+                      Status Pertandingan
                     </th>
                     <th>
                       
@@ -158,11 +192,15 @@ function Page_operator_pertandingan() {
                     </td>
                     <td>
                       Sabung
-                    </td>                    
-                    <td className="project-actions text-right">                      
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-external-link-square-alt"></i>                            
-                      </a>
+                    </td>       
+                    <td>
+                      <button className="btn btn-success btn-sm">Berhenti</button>
+                      <button className="btn btn-danger btn-sm">Berlangsung</button>
+                    </td>              
+                    <td className="row">       
+                      <Link to="/PapanSkor" target="_blank" className="btn btn-primary btn-sm">
+                        <i className="fas fa-external-link-square-alt"></i>
+                      </Link>               
                       <a className="btn btn-danger btn-sm" href="#">
                         <i className="fas fa-pencil-alt"></i>                        
                       </a>                                            
@@ -172,6 +210,40 @@ function Page_operator_pertandingan() {
                     </td>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>
+                      No
+                    </th>
+                    <th>
+                      Arena
+                    </th>
+                    <th>
+                      Sudut Merah
+                    </th>
+                    <th>
+                      Sudut Biru
+                    </th>
+                    <th>
+                      Ronde
+                    </th>
+                    <th>
+                      Waktu(menit)
+                    </th>
+                    <th>
+                      Nama Pertandingan
+                    </th>
+                    <th>
+                      Jenis Pertandingan
+                    </th>
+                    <th>
+                      Status Pertandingan
+                    </th>
+                    <th>
+                      
+                    </th>
+                  </tr>
+                </tfoot>
               </table>
           </div>
         </div>
