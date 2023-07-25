@@ -48,9 +48,9 @@ function Papan_skor() {
                         </div>
                       </div>
                     </td>
-                    <td className="text-center col-3" style={{ backgroundColor: '#f00', color: 'white', verticalAlign : 'middle', textAlign:'center', fontSize: 100 }} colSpan={3} rowSpan={3}><p>6</p></td>
+                    <td className="text-center col-3" style={{ backgroundColor: '#f00', color: 'white', verticalAlign : 'middle', textAlign:'center', fontSize: '100px' }} colSpan={3} rowSpan={3}><p>6</p></td>
                     <td className="text-center col-3" colSpan={2}>I</td>
-                    <td className="text-center col-3" style={{ backgroundColor: '#00f', color: 'white', verticalAlign : 'middle', textAlign:'center', fontSize: 100 }} colSpan={3} rowSpan={3}><p>7</p></td>
+                    <td className="text-center col-3" style={{ backgroundColor: '#00f', color: 'white', verticalAlign : 'middle', textAlign:'center', fontSize: '100px' }} colSpan={3} rowSpan={3}><p>7</p></td>
                     <td>
                       <div className="row justify-content-center">
                         <div>

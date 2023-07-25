@@ -2,7 +2,7 @@ const db = require('../config/config.db');
 
 // Mendapatkan semua data user
 const getAllAtlit = (callback) => {
-    const sql = 'SELECT * FROM atlit';
+    const sql = 'SELECT atlit.*, tim.tim FROM atlit INNER JOIN tim ON tim.id = atlit.tim_id';
     db.query(sql, callback);
 };
 
@@ -13,15 +13,15 @@ const getAtlitById = (id, callback) => {
 };
 
 // Menyimpan data user baru
-const createAtlit = (nama, kontingen, kelas, kategori, jk, callback) => {
-    const sql = 'INSERT INTO atlit (nama, kontingen, kelas, kategori, jk) VALUES (?, ?, ?, ?, ?)';
-    db.query(sql, [nama, kontingen, kelas, kategori, jk], callback);
+const createAtlit = (nama, kontingen, kelas, kategori, jk, tim_id, callback) => {
+    const sql = 'INSERT INTO atlit (nama, kontingen, kelas, kategori, jk, tim_id) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(sql, [nama, kontingen, kelas, kategori, jk, tim_id], callback);
 };
 
 // Memperbarui data user berdasarkan id
-const updateAtlit = (id, nama, kontingen, kelas, kategori, jk, callback) => {
-    const sql = 'UPDATE atlit SET nama = ?, kontingen = ?, kelas = ?, kategori = ?, jk = ? WHERE id = ?';
-    db.query(sql, [nama, kontingen, kelas, kategori, jk, id], callback);
+const updateAtlit = (id, nama, kontingen, kelas, kategori, jk, tim_id, callback) => {
+    const sql = 'UPDATE atlit SET nama = ?, kontingen = ?, kelas = ?, kategori = ?, jk = ?, tim_id = ? WHERE id = ?';
+    db.query(sql, [nama, kontingen, kelas, kategori, jk, tim_id, id], callback);
 };
 
 // Menghapus data user berdasarkan id

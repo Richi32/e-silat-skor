@@ -27,8 +27,8 @@ const getAtlitById = (req, res) => {
 
 // Handler untuk POST /users
 const createAtlit = (req, res) => {
-    const { nama, kontingen, kelas, kategori, jk } = req.body;
-    atlitModel.createAtlit(nama, kontingen, kelas, kategori, jk, (err, result) => {
+    const { nama, kontingen, kelas, kategori, jk, tim_id } = req.body;
+    atlitModel.createAtlit(nama, kontingen, kelas, kategori, jk, tim_id, (err, result) => {
         if (err) {
             throw err;
         }
@@ -39,8 +39,8 @@ const createAtlit = (req, res) => {
 // Handler untuk PUT /users/:id
 const updateAtlit = (req, res) => {
     const { id } = req.params;
-    const { nama, kontingen, kelas, kategori, jk } = req.body;
-    atlitModel.updateAtlit(id, nama, kontingen, kelas, kategori, jk, (err, result) => {
+    const { nama, kontingen, kelas, kategori, jk, tim_id } = req.body;
+    atlitModel.updateAtlit(id, nama, kontingen, kelas, kategori, jk, tim_id, (err, result) => {
         if (err) {
             throw err;
         }

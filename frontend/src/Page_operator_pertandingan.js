@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Page_operator_pertandingan() {
   return (
@@ -38,31 +39,31 @@ function Page_operator_pertandingan() {
                       <div className="card-body">
                         <div className="form-group">
                           <label htmlFor="Arena">Arena</label>
-                          <input type="email" className="form-control" id="Arena" />
+                          <input type="text" className="form-control" id="Arena" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="SudutMerah">Sudut Merah</label>
-                          <input type="email" className="form-control" id="SudutMerah" />
+                          <input type="text" className="form-control" id="SudutMerah" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="SudutBiru">Sudut Biru</label>
-                          <input type="email" className="form-control" id="SudutBiru" />
+                          <input type="text" className="form-control" id="SudutBiru" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="Ronde">Ronde</label>
-                          <input type="email" className="form-control" id="Ronde" />
+                          <input type="text" className="form-control" id="Ronde" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="Waktu">Waktu (waktu)</label>
-                          <input type="email" className="form-control" id="Waktu" />
+                          <input type="text" className="form-control" id="Waktu" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="NamaPertandingan">Nama Pertandingan</label>
-                          <input type="email" className="form-control" id="NamaPertandingan" />
+                          <input type="text" className="form-control" id="NamaPertandingan" />
                         </div>
                         <div className="form-group">
                           <label htmlFor="JenisPertandingan">Jenis Pertandingan</label>
-                          <input type="email" className="form-control" id="JenisPertandingan" />
+                          <input type="text" className="form-control" id="JenisPertandingan" />
                         </div>
                       </div>
                     </div>
@@ -129,6 +130,9 @@ function Page_operator_pertandingan() {
                       Jenis Pertandingan
                     </th>
                     <th>
+                      Status Pertandingan
+                    </th>
+                    <th>
                       
                     </th>
                   </tr>
@@ -158,11 +162,15 @@ function Page_operator_pertandingan() {
                     </td>
                     <td>
                       Sabung
-                    </td>                    
-                    <td className="project-actions text-right">                      
-                      <a className="btn btn-primary btn-sm" href="#">
-                        <i className="fas fa-external-link-square-alt"></i>                            
-                      </a>
+                    </td>       
+                    <td>
+                      <button className="btn btn-success btn-sm">Berhenti</button>
+                      <button className="btn btn-danger btn-sm">Berlangsung</button>
+                    </td>              
+                    <td className="project-actions text-right">       
+                      <Link to="/PapanSkor" target="_blank" className="btn btn-primary btn-sm">
+                        <i className="fas fa-external-link-square-alt"></i>
+                      </Link>               
                       <a className="btn btn-danger btn-sm" href="#">
                         <i className="fas fa-pencil-alt"></i>                        
                       </a>                                            

@@ -17,8 +17,7 @@ const checkAuth = (req, res, next) => {
         });
     } else {
         return res.status(401).json({ 
-            message: 'Token tidak ditemukan',
-            data: token
+            message: 'Token tidak ditemukan'
         });
     }
 };

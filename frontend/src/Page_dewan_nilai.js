@@ -5,6 +5,53 @@ function Page_dewan_nilai() {
     <div>
     <div className="content-wrapper">
       <section className="content">
+        
+        {/* modal  biru*/}
+        <div className="modal fade" id="modal-biru">
+              <div className="modal-dialog">
+                <div className="modal-content bg-primary">
+                  <div className="modal-header">
+                    <h4 className="modal-title">Vote Pihak Biru</h4>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <button className="btn btn-default">Jatuhan</button>
+                    <button className="btn btn-default">Binaan</button>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+
+{/* modal  merah*/}
+            <div className="modal fade" id="modal-merah">
+              <div className="modal-dialog">
+                <div className="modal-content bg-danger">
+                  <div className="modal-header">
+                    <h4 className="modal-title">Vote Pihak Merah</h4>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <button className="btn btn-default">Jatuhan</button>
+                    <button className="btn btn-default">Binaan</button>
+                  </div>                  
+                </div>
+              </div>
+            </div>            
+
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
@@ -130,13 +177,13 @@ function Page_dewan_nilai() {
                       <button className="button btn btn-block bg-gradient-danger btn-lg">Peringatan</button>
                     </div>
                     <div className="button-group">
-                      <button className="button btn btn-block bg-gradient-success btn-lg">Vote</button>
+                      <button className="button btn btn-block bg-gradient-success btn-lg" data-toggle="modal" data-target="#modal-merah">Vote</button>
                       <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
                     </div>
                   </div>
                   <div className="col-6">
                     <div className="button-group">
-                      <button className="button btn btn-block bg-gradient-success btn-lg">Vote</button>
+                      <button className="button btn btn-block bg-gradient-success btn-lg" data-toggle="modal" data-target="#modal-biru">Vote</button>
                       <button className="button btn btn-block bg-gradient-warning btn-lg">Hapus</button>
                     </div>
                     <div className="button-group">
