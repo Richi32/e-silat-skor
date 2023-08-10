@@ -106,7 +106,7 @@
             $.ajax({
                 type: "GET",
                 url: "<?= base_url() ?>process/penilaian-juri/hapus.php",
-                data: { 
+                data: {
                     users_id : users_id,
                     atlit_id : atlit_id
                 },
