@@ -1,0 +1,728 @@
+$(document).ready(function () {
+	getData();
+	// console.log(id);
+	// console.log(rondeId);
+	
+
+	$(document).on("click", "#jatuhan_m", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 3;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#jatuhan_b", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 3;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#binaan_m", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 6;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#binaan_b", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 6;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#teguran_m", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 5;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#teguran_b", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 5;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#peringatan_m", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 4;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#peringatan_b", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 4;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#vote_jm", function () {
+		let modal = "modal-merah";
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 3;
+		tambahVote(nilaiId, modal, atlitId, rondeId);
+	});
+
+	$(document).on("click", "#vote_jb", function () {
+		let modal = "modal-biru";
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 3;
+		tambahVote(nilaiId, modal, atlitId, rondeId);
+	});
+
+	$(document).on("click", "#vote_bm", function () {
+		let modal = "modal-merah";
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 6;
+		tambahVote(nilaiId, modal, atlitId, rondeId);
+	});
+
+	$(document).on("click", "#vote_bb", function () {
+		let modal = "modal-biru";
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 6;
+		tambahVote(nilaiId, modal, atlitId, rondeId);
+	});
+
+	$(document).on("click", "#hapus_m", function () {
+		let atlitId = $(this).attr("atlitId");
+		hapusNilai(atlitId);
+	});
+
+	$(document).on("click", "#hapus_b", function () {
+		let atlitId = $(this).attr("atlitId");
+		hapusNilai(atlitId);
+	});
+
+	$(document).on("click", "#ronde_btn", function () {
+		let rondeId = $(this).attr("ronde-id");
+		// console.log(rondeId)
+
+		let newUrl = window.location.href.split('?')[0] + '?id=1&ronde-id=' + rondeId;
+		window.history.pushState({ path: newUrl }, '', newUrl);
+
+		getData();
+	});
+
+	function getData() {
+		let queryString = window.location.search;
+		let urlParams = new URLSearchParams(queryString);
+
+		let id = urlParams.get('id')
+		let rondeId = urlParams.get('ronde-id')
+
+		$.ajax({
+			type: "POST",
+			url: "datanilaidewan",
+			data: {
+				partai_id : id,
+				ronde_id : rondeId
+			},
+			async: false,
+			dataType: "json",
+			success: function (data) {
+				var i;
+				for (i = 0; i < data.length; i++) {
+					$("#arena").text(data[i].arena);
+					$("#pertandingan").text(data[i].pertandingan);
+					$("#kontingen_merah").text(data[i].kontingen_merah);
+					$("#nama_atlit_merah").text(data[i].nama_atlit_merah);
+					$("#kontingen_biru").text(data[i].kontingen_biru);
+					$("#nama_atlit_biru").text(data[i].nama_atlit_biru);
+
+					$("#jatuhan_m").attr("atlitId", data[i].tim_merah_id);
+					$("#binaan_m").attr("atlitId", data[i].tim_merah_id);
+					$("#teguran_m").attr("atlitId", data[i].tim_merah_id);
+					$("#peringatan_m").attr("atlitId", data[i].tim_merah_id);
+					$("#hapus_m").attr("atlitId", data[i].tim_merah_id);
+
+					$("#jatuhan_b").attr("atlitId", data[i].tim_biru_id);
+					$("#binaan_b").attr("atlitId", data[i].tim_biru_id);
+					$("#teguran_b").attr("atlitId", data[i].tim_biru_id);
+					$("#peringatan_b").attr("atlitId", data[i].tim_biru_id);
+					$("#hapus_b").attr("atlitId", data[i].tim_biru_id);
+
+					$("#vote_jm").attr("atlitId", data[i].tim_merah_id);
+					$("#vote_jb").attr("atlitId", data[i].tim_biru_id);
+					$("#vote_bm").attr("atlitId", data[i].tim_merah_id);
+					$("#vote_bb").attr("atlitId", data[i].tim_biru_id);
+
+					getRonde(id, rondeId, data[i].tim_merah_id, data[i].tim_biru_id);
+
+
+					if (data[i].status_ronde == "nonaktif") {
+						$("#tombol").hide();
+					} else {
+						$("#tombol").show();
+					}
+				}
+			},
+		});
+	}
+
+	function getRonde(partai_id, ronde_id, tim_merah_id, tim_biru_id) {
+		$.ajax({
+			type: "POST",
+			url: "datarondedewan",
+			data: {
+				partai_id: partai_id
+			},
+			dataType: "json",
+			success: function (data) {
+				let html = "";
+				let i;
+				for (i = 0; i < data.length; i++) {
+					html +=
+						"<tr ronde-id='"+
+						data[i].ronde_id +
+						"'>" +
+						"<td class='text-danger bg-warning text-center'>" +
+						"<span id='peringatan_merah_" +
+						i +
+						"' peringatan-merah-" +
+						i +
+						"=''></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='teguran_merah_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='binaan_merah_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='hukuman_merah_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger'>" +
+						"<span id='jatuhan_merah_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-center ";
+					if (ronde_id == data[i].ronde_id){
+						html +=	"bg-navy";
+					}
+					html +=	
+						"' id='ronde_btn' ronde-id='" +
+						data[i].ronde_id +
+						"' style='cursor: pointer;'>" +
+						"<strong>" +
+						"<span id='ronde'>" +
+						data[i].ronde +
+						"</span>" +
+						"</strong>" +
+						"</td>" +
+						"<td class='text-danger text-right'>" +
+						"<span id='jatuhan_biru_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='hukuman_biru_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='binaan_biru_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger text-center'>" +
+						"<span id='teguran_biru_"+
+						i +
+						"'></span>" +
+						"</td>" +
+						"<td class='text-danger bg-warning text-center'>" +
+						"<span id='peringatan_biru_"+
+						i +
+						"' peringatan-merah-" +
+						i +
+						"=''></span>" +
+						"</td>" +
+						"</tr>";
+
+					
+					getPeringatanMerah(i, data[i].ronde_id, tim_merah_id);
+					getTeguranMerah(i, data[i].ronde_id, tim_merah_id);
+					getBinaanMerah(i, data[i].ronde_id, tim_merah_id);
+					getHukumanMerah(i, data[i].ronde_id, tim_merah_id);
+					getJatuhanMerah(i, data[i].ronde_id, tim_merah_id);
+
+					getPeringatanBiru(i, data[i].ronde_id, tim_biru_id);
+					getTeguranBiru(i, data[i].ronde_id, tim_biru_id);
+					getBinaanBiru(i, data[i].ronde_id, tim_biru_id);
+					getHukumanBiru(i, data[i].ronde_id, tim_biru_id);
+					getJatuhanBiru(i, data[i].ronde_id, tim_biru_id);
+				}
+				$("#loadRonde").html(html);
+			},
+		});
+	}
+
+	function getPeringatanMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiperingatandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id:  4
+			},
+			dataType: "json",
+			success: function (data) {
+				for (i = 0; i < data.length; i++) {
+					// console.log("merah "+index)
+					if (index == 0) {
+						$("#per_m1").val(data[i].nilai);
+						$("#peringatan_merah_" + index).text("-" + data[i].nilai);
+						// console.log(data[i].nilai);
+					} else if (index == 1) {
+						nilaiM2 = $("#per_m1").val();
+						sumVarM2 = parseInt(nilaiM2) + parseInt(data[i].nilai);
+						$("#per_m2").val(sumVarM2);
+						$("#peringatan_merah_" + index).text("-" + sumVarM2);
+						// console.log(data[i].nilai);
+					} else if (index == 2) {
+						nilaiM3 = $("#per_m2").val();
+						sumVarM3 = parseInt(nilaiM3) + parseInt(data[i].nilai);
+						// $("#per_sm2").val(sumVarB1);
+						$("#peringatan_merah_" + index).text("-" + sumVarM3);
+					}
+				}
+			},
+		});
+	}
+
+	function getPeringatanBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiperingatandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 4
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					// console.log("biru " + index)
+					if (index == 0) {
+						$("#per_b1").val(data[i].nilai);
+						$("#peringatan_biru_" + index).text("-" + data[i].nilai);
+						// console.log(data[i].nilai);
+					} else if (index == 1) {
+						nilaiB2 = $("#per_b1").val();
+						sumVarB2 = parseInt(nilaiB2) + parseInt(data[i].nilai);
+						$("#per_b2").val(sumVarB2);
+						$("#peringatan_biru_" + index).text("-" + sumVarB2);
+						// console.log(data[i].nilai);
+					} else if (index == 2) {
+						nilaiB3 = $("#per_b2").val();
+						sumVarB3 = parseInt(nilaiB3) + parseInt(data[i].nilai);
+						// $("#per_sm2").val(sumVarB1);
+						$("#peringatan_biru_" + index).text("-" + sumVarB3);
+					}
+				}
+			},
+		});
+	}
+
+	function getTeguranMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 5
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#teguran_merah_" + index).text("-" + data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getTeguranBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 5
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#teguran_biru_" + index).text("-" + data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getBinaanMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 6
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#binaan_merah_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getBinaanBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 6
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#binaan_biru_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getBinaanMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 6
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#binaan_merah_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getBinaanBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaiatlitdewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 6
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#binaan_biru_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getJatuhanMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaijatuhandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 3
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#jatuhan_merah_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getJatuhanBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaijatuhandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_id: 3
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				for (i = 0; i < data.length; i++) {
+					$("#jatuhan_biru_" + index).text(data[i].nilai);
+					// console.log(data[i].nilai)
+					console.log(i)
+				}
+			},
+		});
+	}
+
+	function getHukumanMerah(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaihukumandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_t_id: 5,
+				nilai_p_id: 4
+			},
+			dataType: "json",
+			success: function (data) {
+				let nilai = data.nilai; // Mengambil nilai dari properti 'nilai' dalam objek
+				$("#hukuman_merah_" + index).text(nilai);
+			},
+		});
+	}
+
+	function getHukumanBiru(index, ronde_id, atlit_id) {
+		// console.log(index)
+		$.ajax({
+			type: "POST",
+			url: "datanilaihukumandewan",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id,
+				nilai_t_id: 5,
+				nilai_p_id: 4
+			},
+			dataType: "json",
+			success: function (data) {
+				let nilai = data.nilai; // Mengambil nilai dari properti 'nilai' dalam objek
+				$("#hukuman_biru_" + index).text(nilai);
+			},
+		});
+	}
+
+	function tambahNilai(rondeId, atlitId, nilaiId, tombol) {
+		$.ajax({
+			type: "POST",
+			url: "tambahnilaidewan",
+			data: {
+				ronde_id: rondeId,
+				atlit_id: atlitId,
+				nilai_id: nilaiId
+			},
+			success: function () {
+				updateTombol(tombol);
+				getData();
+			},
+		});
+	}
+
+	function tambahVote(nilaiId, modal, atlitId, rondeId) {
+		$.ajax({
+			type: "POST",
+			url: "tambahvotedewan",
+			data: {
+				nilai_id: nilaiId,
+				sudut: modal
+			},
+			success: function () {
+				// updateTombol(tombol);
+				// getData();
+				$("#"+modal).modal("hide");
+				let intervalId = setInterval(function () {
+					getDataVote();
+				}, 1000);
+				$("#modal-vote").modal("show");
+				setTimeout(function () {
+					clearInterval(intervalId); // Menghentikan setInterval setelah 2 detik
+					$("#modal-vote").modal("hide");
+					hasilVote(atlitId, rondeId);
+					getData();
+				}, 5000);
+			},
+		});
+	}
+
+	function getDataVote() {
+		$.ajax({
+			type: "GET",
+			url: "datavotedewan",
+			async: false,
+			dataType: "json",
+			success: function (data) {
+				var html = "";
+				var i;
+				for (i = 0; i < data.length; i++) {
+					html +=
+						"<tr>" +
+						"<th class='text-center ";
+						if (data[i].juri_1 == 'y'){
+							html += "bg-green";
+						} else if (data[i].juri_1 == 'n'){
+							html += "bg-red";
+						}
+					html +=
+						"' style='padding: 2rem; vertical-align: middle;'>Juri 1</th>" +
+						"<th class='text-center ";
+						if (data[i].juri_2 == 'y') {
+							html += "bg-green";
+						} else if (data[i].juri_2 == 'n') {
+							html += "bg-red";
+						}
+					html +=
+						"' style='padding: 2rem; vertical-align: middle;'>Juri 2</th>" +
+						"<th class='text-center ";
+						if (data[i].juri_3 == 'y') {
+							html += "bg-green";
+						} else if (data[i].juri_3 == 'n') {
+							html += "bg-red";
+						}
+					html +=
+						"' style='padding: 2rem; vertical-align: middle;'>Juri 3</th>" +
+						"</tr>";
+				}
+				$("#getDataVote").html(html);
+			},
+		});
+	}
+
+	function hasilVote(atlitId, rondeId) {
+		$.ajax({
+			type: "POST",
+			url: "hasilvotedewan",
+			data: {
+				atlit_id: atlitId,
+				ronde_id: rondeId
+			},
+			dataType: "json",
+			success: function (data) {
+				console.log("data ok");
+			},
+		});
+	}
+
+
+
+	function hapusNilai(atlitId) {
+		$.ajax({
+			type: "POST",
+			url: "hapusnilaidewan",
+			data: {
+				atlit_id: atlitId
+			},
+			success: function () {
+				getData();
+			},
+		});
+	}
+
+	function updateTombol(tombol) {
+		$.ajax({
+			type: "POST",
+			url: "updatetombol",
+			data: {
+				tombol: tombol,
+				status: 'on'
+			},
+			success: function () {
+				setTimeout(function () {
+					$.ajax({
+						type: "POST",
+						url: "updatetombol",
+						data: {
+							tombol: tombol,
+							status: 'off'
+						},
+						success: function () {
+							console.log(tombol + ' off');
+						},
+					});
+				}, 2000); 
+			},
+		});
+	}
+});
