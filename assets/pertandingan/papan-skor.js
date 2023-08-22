@@ -1,9 +1,14 @@
 $(document).ready(function () {
     getData();
     var base_url = window.location.origin;
+    setInterval(function () {
+        getDataVote();
+    }, 1000);
     // setInterval(function () {
     //     getDataVote();
     // }, 1000);
+
+    
     // console.log(id);
     // console.log(rondeId);
 
@@ -68,6 +73,7 @@ $(document).ready(function () {
 
                         getTombolJuri();
                     }, 1000);
+                    
                 }
             },
         });
@@ -91,14 +97,25 @@ $(document).ready(function () {
                         "'>" +
                         "<td class='text-center ";
                     if (ronde_id == data[i].ronde_id) {
-                        html += "bg-olive";
+                        html += "bg-navy";
                     }
                     html +=
                         "' id='ronde_btn' ronde-id='" +
                         data[i].ronde_id +
-                        "' style='cursor: pointer; vertical-align: middle'>" +
+                        "' style='cursor: pointer; vertical-align: middle;";
+                    if (ronde_id == data[i].ronde_id) {
+                        html += "font-size: 5rem; font-weigth: bold;";
+                    }
+                    html +=
+                        "'>" +
                         "<strong>" +
-                        "<span id='ronde'>" +
+                        "<span id='ronde'>";
+                        if (ronde_id == data[i].ronde_id) {
+                            html += "<span style='font-size: 2rem;'>Ronde</span><br>";
+                        } else {
+                            html += "<span>Ronde</span><br>";
+                        }
+                    html +=
                         data[i].ronde +
                         "</span>" +
                         "</strong>" +
@@ -121,23 +138,28 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (data) {
+                // console.log("nilai binaan merah = " + data.length);
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
+                if (data.length <= 0) {
+                    $("#bin_m1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        let nilai = 0; // Inisialisasi nilai di luar perulangan
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
 
-                    if (nilai >= 1) {
-                        $("#bin_m1").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#bin_m1").removeClass("bg-red").addClass("bg-default");
-                    }
+                        if (nilai >= 1) {
+                            $("#bin_m1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#bin_m1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2 && nilai % 2 === 0) {
-                        $("#bin_m2").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#bin_m2").removeClass("bg-red").addClass("bg-default");
+                        if (nilai >= 2 && nilai % 2 === 0) {
+                            $("#bin_m2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#bin_m2").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -156,22 +178,26 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
+                if (data.length <= 0) {
+                    $("#bin_b1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        let nilai = 0; // Inisialisasi nilai di luar perulangan
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
 
-                    if (nilai >= 1) {
-                        $("#bin_b1").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#bin_b1").removeClass("bg-red").addClass("bg-default");
-                    }
+                        if (nilai >= 1) {
+                            $("#bin_b1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#bin_b1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2 && nilai % 2 === 0) {
-                        $("#bin_b2").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#bin_b2").removeClass("bg-red").addClass("bg-default");
+                        if (nilai >= 2 && nilai % 2 === 0) {
+                            $("#bin_b2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#bin_b2").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -190,22 +216,26 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
+                if (data.length <= 0) {
+                    $("#teg_m1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        let nilai = 0; // Inisialisasi nilai di luar perulangan
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
 
-                    if (nilai >= 1) {
-                        $("#teg_m1").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#teg_m1").removeClass("bg-red").addClass("bg-default");
-                    }
+                        if (nilai >= 1) {
+                            $("#teg_m1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#teg_m1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2 && nilai % 2 === 0) {
-                        $("#teg_m2").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#teg_m2").removeClass("bg-red").addClass("bg-default");
+                        if (nilai >= 2 && nilai % 2 === 0) {
+                            $("#teg_m2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#teg_m2").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -224,22 +254,26 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
+                if (data.length <= 0) {
+                    $("#teg_b1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        let nilai = 0; // Inisialisasi nilai di luar perulangan
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
 
-                    if (nilai >= 1) {
-                        $("#teg_b1").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#teg_b1").removeClass("bg-red").addClass("bg-default");
-                    }
+                        if (nilai >= 1) {
+                            $("#teg_b1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#teg_b1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2 && nilai % 2 === 0) {
-                        $("#teg_b2").removeClass("bg-green").addClass("bg-red");
-                    } else {
-                        $("#teg_b2").removeClass("bg-red").addClass("bg-default");
+                        if (nilai >= 2 && nilai % 2 === 0) {
+                            $("#teg_b2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#teg_b2").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -258,37 +292,30 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
-                    
-                    console.log(nilai)
-                    if (nilai >= 1) {
-                        $("#per_m1").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_m1").attr("status", "on");
-                    } else {
-                        $("#per_m1").removeClass("bg-red").addClass("bg-default");
-                        // if ($("#per_m1").hasAttr("status")) {
-                        //     $("#per_m1").removeAttr("status");
-                        // }
-                    }
+                if (data.length <= 0) {
+                    $("#per_m1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
+                        if (nilai >= 1) {
+                            $("#per_m1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_m1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2) {
-                        $("#per_m2").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_m2").attr("status", "on");
-                    } else {
-                        $("#per_m2").removeClass("bg-red").addClass("bg-default");
-                        // $("#per_m2").removeAttr("status").attr("status", "off");
-                    }
+                        if (nilai >= 2) {
+                            $("#per_m2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_m2").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 3 && nilai % 3 === 0) {
-                        $("#per_m3").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_m3").attr("status", "on");
-                    } else {
-                        $("#per_m3").removeClass("bg-red").addClass("bg-default");
-                        // $("#per_m3").removeAttr("status").attr("status", "off");
+                        if (nilai >= 3 && nilai % 3 === 0) {
+                            $("#per_m3").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_m3").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -307,34 +334,32 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let i;
-                for (i = 0; i < data.length; i++) {
-                    let nilai = 0; // Inisialisasi nilai di luar perulangan
-                    if (data.length > 0) {
-                        nilai = data[0].nilai; // Ambil nilai hanya jika ada data
-                    }
+                if (data.length <= 0) {
+                    $("#per_b1").removeClass("bg-red").addClass("bg-default");
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        let nilai = 0; // Inisialisasi nilai di luar perulangan
+                        if (data.length > 0) {
+                            nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+                        }
 
-                    if (nilai >= 1) {
-                        $("#per_b1").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_b1").attr("status", "on");
-                    } else {
-                        $("#per_b1").removeClass("bg-red").addClass("bg-default");
-                        // $("#per_b1").removeAttr("status").attr("status", "off");
-                    }
+                        if (nilai >= 1) {
+                            $("#per_b1").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_b1").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 2) {
-                        $("#per_b2").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_b2").attr("status", "on");
-                    } else {
-                        $("#per_b2").removeClass("bg-red").addClass("bg-default");
-                        // $("#per_b2").removeAttr("status").attr("status", "off");
-                    }
+                        if (nilai >= 2) {
+                            $("#per_b2").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_b2").removeClass("bg-red").addClass("bg-default");
+                        }
 
-                    if (nilai >= 3 && nilai % 3 === 0) {
-                        $("#per_b3").removeClass("bg-green").addClass("bg-red");
-                        // $("#per_b3").attr("status", "on");
-                    } else {
-                        $("#per_b3").removeClass("bg-red").addClass("bg-default");
-                        // $("#per_b3").removeAttr("status").attr("status", "off");
+                        if (nilai >= 3 && nilai % 3 === 0) {
+                            $("#per_b3").removeClass("bg-green").addClass("bg-red");
+                        } else {
+                            $("#per_b3").removeClass("bg-red").addClass("bg-default");
+                        }
                     }
                 }
             },
@@ -405,6 +430,104 @@ $(document).ready(function () {
                         $("#" + tombolId).removeClass("bg-olive"); // Menghapus kelas untuk warna
                     }
                 }
+            },
+        });
+    }
+
+    function getDataVote() {
+        $.ajax({
+            type: "GET",
+            url: "datavoteskor",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].id != null) {
+                        if (data[i].nilai_id == 3) {
+                            var vote = "Jatuhan";
+                        } else {
+                            var vote = "Pelanggaran";
+                        }
+
+                        if (data[i].sudut == "modal-merah") {
+                            $("#title_merah").text(vote);
+                        } else {
+                            $("#title_biru").text(vote);
+                        }
+                        $("#vote_yb").attr("voteId", data[i].id);
+                        $("#vote_ym").attr("voteId", data[i].id);
+                        $("#vote_nb").attr("voteId", data[i].id);
+                        $("#vote_nm").attr("voteId", data[i].id);
+
+                        $("#vote_yb").attr("dataM", data[i].sudut);
+                        $("#vote_ym").attr("dataM", data[i].sudut);
+                        $("#vote_nb").attr("dataM", data[i].sudut);
+                        $("#vote_nm").attr("dataM", data[i].sudut);
+                        
+                        $("#" + data[i].sudut).modal("show");
+                        setInterval(function () {
+                            getDataVoteJuri();
+                        }, 1000);
+                        
+                    }
+                }
+            },
+        });
+    }
+
+    function getDataVoteJuri() {
+        $.ajax({
+            type: "GET",
+            url: "datavotedewan",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                var html = "";
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    var sudut = data[i].sudut;
+                    html +=
+                        "<tr>" +
+                        "<th class='text-center ";
+                    if (data[i].juri_1 == 'y') {
+                        html += "bg-green";
+                    } else if (data[i].juri_1 == 'n') {
+                        html += "bg-red";
+                    }
+                    html +=
+                        "' style='padding: 2rem; vertical-align: middle;'>Juri 1</th>" +
+                        "<th class='text-center ";
+                    if (data[i].juri_2 == 'y') {
+                        html += "bg-green";
+                    } else if (data[i].juri_2 == 'n') {
+                        html += "bg-red";
+                    }
+                    html +=
+                        "' style='padding: 2rem; vertical-align: middle;'>Juri 2</th>" +
+                        "<th class='text-center ";
+                    if (data[i].juri_3 == 'y') {
+                        html += "bg-green";
+                    } else if (data[i].juri_3 == 'n') {
+                        html += "bg-red";
+                    }
+                    html +=
+                        "' style='padding: 2rem; vertical-align: middle;'>Juri 3</th>" +
+                        "</tr>";
+                    
+                    if(data[i].status == "close"){
+                        $("#" + data[i].sudut).modal("hide");
+                    }
+                }
+
+                if (sudut == "modal-merah") {
+                    $("#getDataVoteM").html(html);
+                } else {
+                    $("#getDataVoteB").html(html);
+                }
+
+                // $("#getDataVote").html(html);
+                
             },
         });
     }

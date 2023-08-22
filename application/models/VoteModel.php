@@ -40,6 +40,22 @@ class VoteModel extends CI_Model {
         return $data->result();
     }
 
+    public function getDataVoteSkor(){
+        $data = $this->db->query("SELECT
+                                        *,
+
+	                                    COALESCE(SUM(id), 0) AS id_sum
+                                    FROM
+                                        vote
+                                    WHERE
+                                        STATUS = 'open'
+                                    ORDER BY
+                                        id DESC
+                                        LIMIT 1;
+        ");
+        return $data->result();
+    }
+
     public function updateDataVoteJuri($tabel, $data, $where){
         $data = $this->db->update($tabel, $data, $where);
         return $data;

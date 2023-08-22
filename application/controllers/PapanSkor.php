@@ -9,6 +9,7 @@ class PapanSkor extends CI_Controller {
             redirect('login');
         }
 		$this->load->model('PapanskorModel'); // Ganti 'DataModel' sesuai dengan nama model Anda
+		$this->load->model('VoteModel');
 	}
 
 	public function index()
@@ -55,12 +56,12 @@ class PapanSkor extends CI_Controller {
 		$id_pukulan = 1;
 		$id_tendangan = 2;
 
-		$data_jatuhan = $this->PapanskorModel->getNilaiDewan($atlit_id, $ronde_id, $id_jatuhan);
-		$data_teguran = $this->PapanskorModel->getNilaiDewan($atlit_id, $ronde_id, $id_teguran);
+		$data_jatuhan = $this->PapanskorModel->getNilaiDewan($atlit_id, $partai_id, $id_jatuhan);
+		$data_teguran = $this->PapanskorModel->getNilaiDewan($atlit_id, $partai_id, $id_teguran);
 		$data_peringatan = $this->PapanskorModel->getNilaiPeringatanDewan($atlit_id, $partai_id, $id_peringatan);
 
-		$data_pukulan = $this->PapanskorModel->getNilaiJuri($atlit_id, $ronde_id, $id_pukulan);
-		$data_tendangan = $this->PapanskorModel->getNilaiJuri($atlit_id, $ronde_id, $id_tendangan);
+		$data_pukulan = $this->PapanskorModel->getNilaiJuri($atlit_id, $partai_id, $id_pukulan);
+		$data_tendangan = $this->PapanskorModel->getNilaiJuri($atlit_id, $partai_id, $id_tendangan);
 
 		$total_nilai_jatuhan = 0;
 		$total_nilai_teguran = 0;
@@ -99,6 +100,11 @@ class PapanSkor extends CI_Controller {
 
 	public function tampilTombol(){
 		$data = $this->PapanskorModel->getTombolJuri();
+		echo json_encode($data);
+	}
+
+	public function tampilDataVote(){
+		$data = $this->VoteModel->getDataVoteSkor();
 		echo json_encode($data);
 	}
 }

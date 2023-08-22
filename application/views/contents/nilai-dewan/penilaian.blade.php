@@ -13,7 +13,7 @@
                             id="vote_jm" atlitId="">Jatuhan</button>
                             <button class="btn btn-lg btn-block btn-warning"
                             id="vote_bm"atlitId=""
-                            style="margin-top: 2rem;">Binaan</button>
+                            style="margin-top: 2rem;">Pelanggaran</button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                             id="vote_jb" atlitId="">Jatuhan</button>
                             <button class="btn btn-lg btn-block bg-navy"
                             id="vote_bb" atlitId=""
-                            style="margin-top: 2rem;">Binaan</button>
+                            style="margin-top: 2rem;">Pelanggaran</button>
                         </div>
                     </div>
                 </div>
@@ -49,6 +49,9 @@
                                 <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 3</th>
                             </tr>
                         </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-block btn-default" id="closeVote" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -87,13 +90,13 @@
                                 </tbody>
                             </table>
                         </div>
-                        <input type="hidden" name="per_m0" id="per_m0">
-                        <input type="hidden" name="per_m1" id="per_m1">
-                        <input type="hidden" name="per_m2" id="per_m2">
+                        <input type="hidden" name="per_m0" id="per_m0" value="0">
+                        <input type="hidden" name="per_m1" id="per_m1" value="0">
+                        <input type="hidden" name="per_m2" id="per_m2" value="0">
 
-                        <input type="hidden" name="per_b0" id="per_b0">
-                        <input type="hidden" name="per_b1" id="per_b1">
-                        <input type="hidden" name="per_b2" id="per_b2">
+                        <input type="hidden" name="per_b0" id="per_b0" value="0">
+                        <input type="hidden" name="per_b1" id="per_b1" value="0">
+                        <input type="hidden" name="per_b2" id="per_b2" value="0">
                         <div class="card-body table-responsive">
                             <table class="table table-bordered">
                                 <thead>

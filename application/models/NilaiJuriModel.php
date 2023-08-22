@@ -7,6 +7,46 @@ class NilaiJuriModel extends CI_Model {
         return $data->result();
     }
 
+    public function getDataTemp(){
+        $data = $this->db->query('SELECT
+                                    id,
+                                    ronde_id,
+                                    users_id,
+                                    atlit_id,
+                                    nilai_id,
+                                    status,
+                                    time
+                                FROM
+                                    penilaian_temp
+                                WHERE
+                                    ( atlit_id, nilai_id ) IN (
+                                    SELECT
+                                        atlit_id,
+                                        nilai_id
+                                    FROM
+                                        penilaian_temp
+                                    GROUP BY
+                                        atlit_id,
+                                        nilai_id
+                                    HAVING
+                                        COUNT(*) > 1
+                                    )
+                                    AND EXISTS (
+                                    SELECT
+                                        1
+                                    FROM
+                                        penilaian_temp AS p2
+                                    WHERE
+                                        penilaian_temp.atlit_id = p2.atlit_id
+                                        AND penilaian_temp.nilai_id = p2.nilai_id
+                                        AND ABS(
+                                        TIMESTAMPDIFF( SECOND, penilaian_temp.TIME, p2.TIME )) <= 2
+                                    AND penilaian_temp.id <> p2.id)
+                                    AND penilaian_temp.status = "new"
+        ');
+        return $data->result();
+    }
+
     public function getDataPenjurian($partai_id, $ronde_id){
         $data = $this->db->query('SELECT
                                     partai.*,
@@ -73,25 +113,58 @@ class NilaiJuriModel extends CI_Model {
 		return $data;
     }
 
+    public function dataNilaiTerakhir($users_id, $atlit_id){
+        $data = $this->db->query('SELECT
+                                *
+                                FROM
+                                    penilaian
+                                WHERE
+                                    users_id = '.$users_id.'
+                                    AND atlit_id = '.$atlit_id.'
+                                    AND id =(
+                                    SELECT
+                                        id
+                                    FROM
+                                        penilaian
+                                    WHERE
+                                        users_id = '.$users_id.'
+                                        AND atlit_id = '.$atlit_id.'
+                                    ORDER BY
+                                    id DESC
+                                    LIMIT 1)
+        ');
+        return $data->result();
+    }
+
     public function deleteData($users_id, $atlit_id){
         $data = $this->db->query('DELETE 
                                     FROM
-                                        penilaian 
+                                        penilaian
                                     WHERE
-                                        users_id = "'.$users_id.'" 
-                                        AND atlit_id = "'.$atlit_id.'" 
+                                        users_id = "'.$users_id.'"
+                                        AND atlit_id = "'.$atlit_id.'"
                                         AND id =(
                                         SELECT
-                                            id 
+                                            id
                                         FROM
-                                            penilaian 
+                                            penilaian
                                         WHERE
-                                            users_id = "'.$users_id.'" 
-                                            AND atlit_id = "'.$atlit_id.'" 
+                                            users_id = "'.$users_id.'"
+                                            AND atlit_id = "'.$atlit_id.'"
                                         ORDER BY
-                                        id DESC 
+                                        id DESC
                                         LIMIT 1)
         ');
+        return $data;
+    }
+
+    public function updateData($tabel, $data, $where){
+        $data = $this->db->update($tabel, $data, $where);
+        return $data;
+    }
+
+    public function truncate($tabel){
+        $data = $this->db->query('TRUNCATE TABLE '.$tabel);
         return $data;
     }
 }

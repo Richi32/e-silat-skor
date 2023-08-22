@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content" style="background-color: #fff;">
-        <div class="modal modal-primary fade" id="modal-biru">
+        <div class="modal modal-primary fade" id="modal-biru" status="close">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal modal-danger fade" id="modal-merah">
+        <div class="modal modal-danger fade" id="modal-merah" status="close">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header text-center">

@@ -318,16 +318,24 @@ $(document).ready(function () {
 						$("#per_m1").val(data[i].nilai);
 						$("#peringatan_merah_" + index).text("-" + data[i].nilai);
 						// console.log(data[i].nilai);
-					} else if (index == 1) {
+					} 
+					if (index == 1) {
 						nilaiM2 = $("#per_m1").val();
 						sumVarM2 = parseInt(nilaiM2) + parseInt(data[i].nilai);
 						$("#per_m2").val(sumVarM2);
 						$("#peringatan_merah_" + index).text("-" + sumVarM2);
 						// console.log(data[i].nilai);
-					} else if (index == 2) {
+					} 
+					if (index == 2) {
 						nilaiM3 = $("#per_m2").val();
-						sumVarM3 = parseInt(nilaiM3) + parseInt(data[i].nilai);
-						// $("#per_sm2").val(sumVarB1);
+						if (nilaiM3 != 0) {
+							nilai = $("#per_m2").val();
+						} else {
+							nilai = $("#per_m1").val();
+						}
+						
+						sumVarM3 = parseInt(nilai) + parseInt(data[i].nilai);
+						// console.log(sumVarM3)
 						$("#peringatan_merah_" + index).text("-" + sumVarM3);
 					}
 				}
@@ -354,17 +362,25 @@ $(document).ready(function () {
 						$("#per_b1").val(data[i].nilai);
 						$("#peringatan_biru_" + index).text("-" + data[i].nilai);
 						// console.log(data[i].nilai);
-					} else if (index == 1) {
-						nilaiB2 = $("#per_b1").val();
-						sumVarB2 = parseInt(nilaiB2) + parseInt(data[i].nilai);
-						$("#per_b2").val(sumVarB2);
-						$("#peringatan_biru_" + index).text("-" + sumVarB2);
+					}
+					if (index == 1) {
+						nilaiM2 = $("#per_b1").val();
+						sumVarM2 = parseInt(nilaiM2) + parseInt(data[i].nilai);
+						$("#per_b2").val(sumVarM2);
+						$("#peringatan_biru_" + index).text("-" + sumVarM2);
 						// console.log(data[i].nilai);
-					} else if (index == 2) {
-						nilaiB3 = $("#per_b2").val();
-						sumVarB3 = parseInt(nilaiB3) + parseInt(data[i].nilai);
-						// $("#per_sm2").val(sumVarB1);
-						$("#peringatan_biru_" + index).text("-" + sumVarB3);
+					}
+					if (index == 2) {
+						nilaiM3 = $("#per_b2").val();
+						if (nilaiM3 != 0) {
+							nilai = $("#per_b2").val();
+						} else {
+							nilai = $("#per_b1").val();
+						}
+
+						sumVarM3 = parseInt(nilai) + parseInt(data[i].nilai);
+						// console.log(sumVarM3)
+						$("#peringatan_biru_" + index).text("-" + sumVarM3);
 					}
 				}
 			},
@@ -617,14 +633,24 @@ $(document).ready(function () {
 					getDataVote();
 				}, 1000);
 				$("#modal-vote").modal("show");
-				setTimeout(function () {
-					clearInterval(intervalId); // Menghentikan setInterval setelah 2 detik
-					$("#modal-vote").modal("hide");
-					hasilVote(atlitId, rondeId);
-					getData();
-				}, 5000);
+				// setTimeout(function () {
+				// 	clearInterval(intervalId); // Menghentikan setInterval setelah 2 detik
+				// 	$("#modal-vote").modal("hide");
+				// 	hasilVote(atlitId, rondeId);
+				// 	getData();
+				// }, 5000);
+				$("#closeVote").on("click", function(){
+					closeVote(intervalId, atlitId, rondeId);
+				});
 			},
 		});
+	}
+
+	function closeVote(intervalId, atlitId, rondeId) {
+		clearInterval(intervalId); // Menghentikan setInterval setelah 2 detik
+		hasilVote(atlitId, rondeId);
+		// console.log('close')
+		// getData();
 	}
 
 	function getDataVote() {
@@ -688,15 +714,35 @@ $(document).ready(function () {
 
 
 	function hapusNilai(atlitId) {
-		$.ajax({
-			type: "POST",
-			url: "hapusnilaidewan",
-			data: {
-				atlit_id: atlitId
-			},
-			success: function () {
-				getData();
-			},
+		Swal.fire({
+			title: "Yakin hapus nilai ?",
+			text: "nilai terakhir yang masuk akan dihapus",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#018C4B",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, hapus!",
+		}).then((result) => {
+			if (result.value) {
+				$.ajax({
+					type: "POST",
+					url: "hapusnilaidewan",
+					data: {
+						atlit_id: atlitId
+					},
+					success: function () {
+						window.location.reload();
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Berhasil dihapus !",// Ubah pesan sukses sesuai respons dari server
+							showConfirmButton: false,
+							timer: 2000,
+						});
+					},
+				});
+				return false;
+			}
 		});
 	}
 

@@ -93,6 +93,16 @@ class NilaiDewan extends CI_Controller {
 			'time' 	=> $time,
 		);
 
+		$dataLog = array(
+			'ronde_id'	=> $ronde_id,
+			'atlit_id' 	=> $atlit_id,
+			'nilai_id'	=> $nilai_id,
+			'users_id' 	=> $users_id,
+			'insert_time' => $time,
+			'status' => 'insert'
+		);
+
+		$this->NilaiDewanModel->simpanData('log', $dataLog);
 		$tambahNilai = $this->NilaiDewanModel->simpanData('penilaian', $data);
 		return $tambahNilai;
 	}
@@ -104,7 +114,8 @@ class NilaiDewan extends CI_Controller {
 		$data = array(
 			'nilai_id'	=> $nilai_id,
 			'time' 	=> $time,
-			'sudut' => $sudut
+			'sudut' => $sudut,
+			'status' => 'open'
 		);
 		$tambahVote = $this->NilaiDewanModel->simpanData('vote', $data);
 		return $tambahVote;
@@ -124,6 +135,10 @@ class NilaiDewan extends CI_Controller {
 		} else {
 			$id_vote = 0;
 		}
+
+		$status = array(
+			'status'	=> 'close'
+		);
 		
 		$dataVote = $this->VoteModel->getData($id_vote);
 		$rowsVote = count($dataVote);
@@ -142,9 +157,19 @@ class NilaiDewan extends CI_Controller {
 				'time' 	=> $time,
 			);
 
-			$tambahNilai = $this->NilaiDewanModel->simpanData('penilaian', $data);
-			return $tambahNilai;
+			if($nilai_id == 3){
+				$tambahNilai = $this->NilaiDewanModel->simpanData('penilaian', $data);
+				$updateStatus = $this->VoteModel->updateDataVoteJuri('vote', $status, 'id = "'.$id_vote.'"');
+				return $updateStatus;
+			} else {
+				$updateStatus = $this->VoteModel->updateDataVoteJuri('vote', $status, 'id = "'.$id_vote.'"');
+				return $updateStatus;
+			}
+		} else {
+			$updateStatus = $this->VoteModel->updateDataVoteJuri('vote', $status, 'id = "'.$id_vote.'"');
+			return $updateStatus;
 		}
+
 		echo json_encode($data);
 	}
 
@@ -152,8 +177,30 @@ class NilaiDewan extends CI_Controller {
 		$atlit_id = $this->input->post('atlit_id');
 		$users_id = $_SESSION['id_user'];
 
-		$hapusNilai = $this->NilaiDewanModel->deleteData($users_id, $atlit_id);
-		return $hapusNilai;
+		$getNilaiTerakhir = $this->NilaiDewanModel->dataNilaiTerakhir($users_id, $atlit_id);
+		$rowsNilaiTerakhir = count($getNilaiTerakhir);
+
+		if($rowsNilaiTerakhir > 0){
+			$firstRow = reset($getNilaiTerakhir);
+			$nilai_id_t = $firstRow->nilai_id;
+			$ronde_id_t = $firstRow->ronde_id;
+			$atlit_id_t = $firstRow->atlit_id;
+			$users_id_t = $_SESSION['id_user'];
+			$time_t = date("Y-m-d h:i:s");
+			$data = array(
+				'ronde_id'	=> $ronde_id_t,
+				'atlit_id' 	=> $atlit_id_t,
+				'nilai_id'	=> $nilai_id_t,
+				'users_id' 	=> $users_id_t,
+				'insert_time' 	=> $time_t,
+				'status' => 'delete'
+			);
+			$tambahNilai = $this->NilaiDewanModel->simpanData('log', $data);
+			if ($tambahNilai > 0){
+				$hapusNilai = $this->NilaiDewanModel->deleteData($users_id, $atlit_id);
+				return $hapusNilai;
+			}
+		}
 	}
 
 }

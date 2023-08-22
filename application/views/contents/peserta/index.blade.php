@@ -78,19 +78,12 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <div class="mb-3 row">
-              <label class="col-sm-2 col-form-label"></label>
-              <div class="col-sm-10">
-                <button type="button" id="tambahData" class="btn btn-success">
-                  <i class="fa fa-save"></i> Simpan
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+          <button type="button" id="tambahData" class="btn btn-success">
+            <i class="fa fa-save"></i> Simpan
+          </button>
         </div>
       </div>
       <!-- /.modal-content -->

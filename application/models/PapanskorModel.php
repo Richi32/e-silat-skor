@@ -87,17 +87,18 @@ class PapanskorModel extends CI_Model {
         $data = $this->db->query('SELECT
                                     p.ronde_id,
                                     p.atlit_id,
-                                    SUM(n.nilai) AS total_nilai
+                                    SUM( n.nilai ) AS total_nilai
                                 FROM
                                     penilaian p
-                                JOIN
-                                    nilai n ON p.nilai_id = n.id
+                                    JOIN nilai n ON p.nilai_id = n.id
+                                    JOIN ronde r ON p.ronde_id = r.id
                                 WHERE
-                                    p.ronde_id = '.$ronde_id.' AND
-                                    p.atlit_id = '.$atlit_id.' AND
-                                    p.nilai_id = '.$nilai_id.'
+                                    r.partai_id = '.$ronde_id.'
+                                    AND p.atlit_id = '.$atlit_id.'
+                                    AND p.nilai_id = '.$nilai_id.'
                                 GROUP BY
-                                    p.ronde_id, p.atlit_id;
+                                    r.partai_id,
+                                    p.atlit_id;
 
         ');
         return $data->result();
@@ -123,37 +124,23 @@ class PapanskorModel extends CI_Model {
         return $data->result();
     }
 
-    public function getNilaiJuri($atlit_id, $ronde_id, $nilai_id){
+    public function getNilaiJuri($atlit_id, $partai_id, $nilai_id){
         $data = $this->db->query('SELECT
                                     p.ronde_id,
                                     p.atlit_id,
                                     p.nilai_id,
                                     n.jenis AS jenis_nilai,
-                                    SUM(n.nilai) AS total_nilai,
-                                    COUNT(*) AS jumlah_data 
+                                    SUM( n.nilai ) AS total_nilai,
+                                    COUNT(*) AS jumlah_data
                                 FROM
                                     penilaian p
-                                JOIN
-                                    nilai n ON p.nilai_id = n.id
-                                WHERE
-                                    EXISTS (
-                                        SELECT
-                                            1 
-                                        FROM
-                                            penilaian p2 
-                                        WHERE
-                                            p2.id = p.id + 1 
-                                            AND p2.ronde_id = p.ronde_id 
-                                            AND p2.atlit_id = p.atlit_id 
-                                            AND p2.nilai_id = p.nilai_id 
-                                            AND ABS(
-                                                TIMESTAMPDIFF( SECOND, p.TIME, p2.TIME )) <= 2 
-                                    )
-                                    AND p.ronde_id = '.$ronde_id.'
+                                    JOIN nilai n ON p.nilai_id = n.id
+                                    JOIN ronde r ON p.ronde_id = r.id
+                                    AND r.partai_id = '.$partai_id.'
                                     AND p.atlit_id = '.$atlit_id.'
                                     AND p.nilai_id = '.$nilai_id.'
                                 GROUP BY
-                                    p.ronde_id,
+                                    r.partai_id,
                                     p.atlit_id,
                                     p.nilai_id,
                                     n.jenis

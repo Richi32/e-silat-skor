@@ -157,8 +157,11 @@ $(document).ready(function () {
 					$("#tendangan_b").attr("atlitId", data[i].tim_biru_id);
 					$("#hapus_b").attr("atlitId", data[i].tim_biru_id);
 
-					getRonde(id, rondeId, data[i].tim_merah_id, data[i].tim_biru_id);
-
+					var tim_merah_id = data[i].tim_merah_id;
+					var tim_biru_id = data[i].tim_biru_id;
+					setInterval(function () {
+						getRonde(id, rondeId, tim_merah_id, tim_biru_id);
+					}, 1000);
 
 					if (data[i].status_ronde == "nonaktif") {
 						$("#tombol").hide();
@@ -212,8 +215,8 @@ $(document).ready(function () {
 						"</td>" +
 						"</tr>";
 
-					getNilaiMerah(i, data[i].ronde, tim_merah_id);
-					getNilaiBiru(i, data[i].ronde, tim_biru_id);
+					getNilaiMerah(i, data[i].ronde_id, tim_merah_id);
+					getNilaiBiru(i, data[i].ronde_id, tim_biru_id);
 				}
 				$("#loadRonde").html(html);
 			},
@@ -291,7 +294,7 @@ $(document).ready(function () {
 						if (data[i].nilai_id == 3) {
 							var vote = "Jatuhan";
 						} else {
-							var vote = "Binaan";
+							var vote = "Pelanggaran";
 						}
 
 						if (data[i].sudut == "modal-merah"){
@@ -313,10 +316,13 @@ $(document).ready(function () {
 
 						var sudut = data[i].sudut;
 						var id = data[i].id;
-						setTimeout(function () {
-							$("#" + sudut).modal("hide");
-							updateVote(id, 'n', sudut);
-						}, 5000); 
+
+						if(data[i].nilai_id == 3){
+							setTimeout(function () {
+								$("#" + sudut).modal("hide");
+								updateVote(id, 'n', sudut);
+							}, 5000); 
+						}
 					}
 				}
 			},
@@ -338,15 +344,35 @@ $(document).ready(function () {
 	}
 
 	function hapusNilai(atlitId) {
-		$.ajax({
-			type: "POST",
-			url: "hapusnilai",
-			data: {
-				atlit_id: atlitId
-			},
-			success: function () {
-				getData();
-			},
+		Swal.fire({
+			title: "Yakin hapus nilai ?",
+			text: "nilai terakhir yang masuk akan dihapus",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#018C4B",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, hapus!",
+		}).then((result) => {
+			if (result.value) {
+				$.ajax({
+					type: "POST",
+					url: "hapusnilai",
+					data: {
+						atlit_id: atlitId
+					},
+					success: function () {
+						getData();
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Berhasil dihapus !",// Ubah pesan sukses sesuai respons dari server
+							showConfirmButton: false,
+							timer: 2000,
+						});
+					},
+				});
+				return false;
+			}
 		});
 	}
 

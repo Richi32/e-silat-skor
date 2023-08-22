@@ -2,6 +2,47 @@
 
 <div class="content-wrapper">
   <section class="content">
+    
+    <div class="modal modal-default fade" id="modal-merah">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center bg-red">
+            <h4 class="modal-title">Vote Sudut Merah</h4>
+            <h2 class="modal-title" id="title_merah"></h2>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered" id="getDataVoteM">
+              <tr>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 1</th>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 2</th>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 3</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-default fade" id="modal-biru">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center bg-blue">
+            <h4 class="modal-title">Vote Sudut Biru</h4>
+            <h2 class="modal-title" id="title_biru"></h2>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered" id="getDataVoteB">
+              <tr>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 1</th>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 2</th>
+                <th class="text-center" style="padding: 2rem; vertical-align: middle;">Juri 3</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container" style="background-color: #fff;">
       <div class="row">
         <div class="col-md-12">
@@ -62,7 +103,7 @@
                   <td class="text-center bg-red" width="350" rowspan="3"
                       style="vertical-align: middle; font-size: 100px;">
                       <strong>
-                        <span id="nilaiMerah"></span>
+                        <span id="nilaiMerah">0</span>
                       </strong>
                   </td>
                   <!-- end nilai tim merah -->

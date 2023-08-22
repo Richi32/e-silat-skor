@@ -123,6 +123,29 @@ class NilaiDewanModel extends CI_Model {
 		return $data;
     }
 
+    public function dataNilaiTerakhir($users_id, $atlit_id){
+        $data = $this->db->query('SELECT
+                                *
+                                FROM
+                                    penilaian
+                                WHERE
+                                    users_id = '.$users_id.'
+                                    AND atlit_id = '.$atlit_id.'
+                                    AND id =(
+                                    SELECT
+                                        id
+                                    FROM
+                                        penilaian
+                                    WHERE
+                                        users_id = '.$users_id.'
+                                        AND atlit_id = '.$atlit_id.'
+                                    ORDER BY
+                                    id DESC
+                                    LIMIT 1)
+        ');
+        return $data->result();
+    }
+
     public function deleteData($users_id, $atlit_id){
         $data = $this->db->query('DELETE 
                                     FROM

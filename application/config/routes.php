@@ -57,6 +57,11 @@ $route['datahukumanskor'] = 'PapanSkor/tampilDataHukuman';
 $route['dataperingatanskor'] = 'PapanSkor/tampilDataHukumanPeringatan';
 $route['datatotalskor'] = 'PapanSkor/tampilDataNilaiSkor';
 $route['datatomboljuriskor'] = 'PapanSkor/tampilTombol';
+$route['datavoteskor'] = 'PapanSkor/tampilDataVote';
+
+$route['history'] = 'History/index';
+$route['log'] = 'History/log';
+$route['datalog'] = 'History/tampilData';
 
 $route['timer'] = 'Timer/index';
 
