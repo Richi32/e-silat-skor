@@ -145,8 +145,9 @@ class Peserta extends CI_Controller {
 		$this->PesertaModel->truncate('ronde');
 		$this->PesertaModel->truncate('partai');
 		$this->PesertaModel->truncate('penilaian');
-		$this->PesertaModel->truncate('hasil_vote');
 		$this->PesertaModel->truncate('vote');
+		$this->PesertaModel->truncate('log');
+		$this->PesertaModel->truncate('penilaian_temp');
 		$data = $this->PesertaModel->truncate('arena');
 		return $data;
 	}
