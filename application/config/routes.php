@@ -66,19 +66,3 @@ $route['datalog'] = 'History/tampilData';
 $route['timer'] = 'Timer/index';
 
 $route['updatetombol'] = 'Tombol/updateData';
-
-// $route['kelas'] = 'Kelas/index';
-// $route['datakelas'] = 'Kelas/tampilData';
-// $route['tambahkelas'] = 'Kelas/tambahKelas';
-// $route['dataeditkelas'] = 'Kelas/dataEditKelas';
-// $route['simpaneditkelas'] = 'Kelas/simpanEditKelas';
-// $route['deletekelas'] = 'Kelas/deleteKelas';
-
-// $route['user'] = 'User/index';
-// $route['datauser'] = 'User/tampilData';
-// $route['tambahuser'] = 'User/tambahUser';
-// $route['dataedituser'] = 'User/dataEditUser';
-// $route['datadetailmapeluser'] = 'User/tampilDataDetailMapel';
-// $route['simpanedituser'] = 'User/simpanEditUser';
-// $route['deleteuser'] = 'User/deleteUser';
-// $route['downloadskor'] = 'Download/DownloadSkor/index';

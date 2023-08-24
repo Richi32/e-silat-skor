@@ -4,13 +4,6 @@ $(document).ready(function () {
     setInterval(function () {
         getDataVote();
     }, 1000);
-    // setInterval(function () {
-    //     getDataVote();
-    // }, 1000);
-
-    
-    // console.log(id);
-    // console.log(rondeId);
 
     function resetBinButtons() {
         $("#bin_m1").removeClass("bg-red bg-green");
@@ -141,7 +134,7 @@ $(document).ready(function () {
                 // console.log("nilai binaan merah = " + data.length);
                 let i;
                 if (data.length <= 0) {
-                    $("#bin_m1").removeClass("bg-red").addClass("bg-default");
+                    $("#bin_m1").attr("src", base_url + "/dist/img/Binaan1.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         let nilai = 0; // Inisialisasi nilai di luar perulangan
@@ -150,15 +143,15 @@ $(document).ready(function () {
                         }
 
                         if (nilai >= 1) {
-                            $("#bin_m1").removeClass("bg-green").addClass("bg-red");
+                            $("#bin_m1").attr("src", base_url + "/dist/img/BinaanMerah1.png");
                         } else {
-                            $("#bin_m1").removeClass("bg-red").addClass("bg-default");
+                            $("#bin_m1").attr("src", base_url + "/dist/img/Binaan1.png");
                         }
 
                         if (nilai >= 2 && nilai % 2 === 0) {
-                            $("#bin_m2").removeClass("bg-green").addClass("bg-red");
+                            $("#bin_m2").attr("src", base_url + "/dist/img/BinaanMerah2.png");
                         } else {
-                            $("#bin_m2").removeClass("bg-red").addClass("bg-default");
+                            $("#bin_m2").attr("src", base_url + "/dist/img/Binaan2.png");
                         }
                     }
                 }
@@ -179,7 +172,7 @@ $(document).ready(function () {
             success: function (data) {
                 let i;
                 if (data.length <= 0) {
-                    $("#bin_b1").removeClass("bg-red").addClass("bg-default");
+                    $("#bin_b1").attr("src", base_url + "/dist/img/Binaan1.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         let nilai = 0; // Inisialisasi nilai di luar perulangan
@@ -188,15 +181,15 @@ $(document).ready(function () {
                         }
 
                         if (nilai >= 1) {
-                            $("#bin_b1").removeClass("bg-green").addClass("bg-red");
+                            $("#bin_b1").attr("src", base_url + "/dist/img/BinaanMerah1.png");
                         } else {
-                            $("#bin_b1").removeClass("bg-red").addClass("bg-default");
+                            $("#bin_b1").attr("src", base_url + "/dist/img/Binaan1.png");
                         }
 
                         if (nilai >= 2 && nilai % 2 === 0) {
-                            $("#bin_b2").removeClass("bg-green").addClass("bg-red");
+                            $("#bin_b2").attr("src", base_url + "/dist/img/BinaanMerah2.png");
                         } else {
-                            $("#bin_b2").removeClass("bg-red").addClass("bg-default");
+                            $("#bin_b2").attr("src", base_url + "/dist/img/Binaan2.png");
                         }
                     }
                 }
@@ -217,7 +210,7 @@ $(document).ready(function () {
             success: function (data) {
                 let i;
                 if (data.length <= 0) {
-                    $("#teg_m1").removeClass("bg-red").addClass("bg-default");
+                    $("#teg_m1").attr("src", base_url + "/dist/img/Teguran1.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         let nilai = 0; // Inisialisasi nilai di luar perulangan
@@ -226,15 +219,15 @@ $(document).ready(function () {
                         }
 
                         if (nilai >= 1) {
-                            $("#teg_m1").removeClass("bg-green").addClass("bg-red");
+                            $("#teg_m1").attr("src", base_url + "/dist/img/TeguranMerah1.png");
                         } else {
-                            $("#teg_m1").removeClass("bg-red").addClass("bg-default");
+                            $("#teg_m1").attr("src", base_url + "/dist/img/Teguran1.png");
                         }
 
                         if (nilai >= 2 && nilai % 2 === 0) {
-                            $("#teg_m2").removeClass("bg-green").addClass("bg-red");
+                            $("#teg_m2").attr("src", base_url + "/dist/img/TeguranMerah2.png");
                         } else {
-                            $("#teg_m2").removeClass("bg-red").addClass("bg-default");
+                            $("#teg_m2").attr("src", base_url + "/dist/img/Teguran2.png");
                         }
                     }
                 }
@@ -255,7 +248,7 @@ $(document).ready(function () {
             success: function (data) {
                 let i;
                 if (data.length <= 0) {
-                    $("#teg_b1").removeClass("bg-red").addClass("bg-default");
+                    $("#teg_b1").attr("src", base_url + "/dist/img/Teguran1.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         let nilai = 0; // Inisialisasi nilai di luar perulangan
@@ -264,15 +257,15 @@ $(document).ready(function () {
                         }
 
                         if (nilai >= 1) {
-                            $("#teg_b1").removeClass("bg-green").addClass("bg-red");
+                            $("#teg_b1").attr("src", base_url + "/dist/img/TeguranMerah1.png");
                         } else {
-                            $("#teg_b1").removeClass("bg-red").addClass("bg-default");
+                            $("#teg_b1").attr("src", base_url + "/dist/img/Teguran1.png");
                         }
 
                         if (nilai >= 2 && nilai % 2 === 0) {
-                            $("#teg_b2").removeClass("bg-green").addClass("bg-red");
+                            $("#teg_b2").attr("src", base_url + "/dist/img/TeguranMerah2.png");
                         } else {
-                            $("#teg_b2").removeClass("bg-red").addClass("bg-default");
+                            $("#teg_b2").attr("src", base_url + "/dist/img/Teguran2.png");
                         }
                     }
                 }
@@ -293,28 +286,28 @@ $(document).ready(function () {
             success: function (data) {
                 let i;
                 if (data.length <= 0) {
-                    $("#per_m1").removeClass("bg-red").addClass("bg-default");
+                    $("#per_m1").attr("src", base_url + "/dist/img/Peringatan.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         if (data.length > 0) {
                             nilai = data[0].nilai; // Ambil nilai hanya jika ada data
                         }
                         if (nilai >= 1) {
-                            $("#per_m1").removeClass("bg-green").addClass("bg-red");
+                            $("#per_m1").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_m1").removeClass("bg-red").addClass("bg-default");
+                            $("#per_m1").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
 
                         if (nilai >= 2) {
-                            $("#per_m2").removeClass("bg-green").addClass("bg-red");
+                            $("#per_m2").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_m2").removeClass("bg-red").addClass("bg-default");
+                            $("#per_m2").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
 
                         if (nilai >= 3 && nilai % 3 === 0) {
-                            $("#per_m3").removeClass("bg-green").addClass("bg-red");
+                            $("#per_m3").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_m3").removeClass("bg-red").addClass("bg-default");
+                            $("#per_m3").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
                     }
                 }
@@ -335,7 +328,7 @@ $(document).ready(function () {
             success: function (data) {
                 let i;
                 if (data.length <= 0) {
-                    $("#per_b1").removeClass("bg-red").addClass("bg-default");
+                    $("#per_b1").attr("src", base_url + "/dist/img/Peringatan.png");
                 } else {
                     for (i = 0; i < data.length; i++) {
                         let nilai = 0; // Inisialisasi nilai di luar perulangan
@@ -344,21 +337,21 @@ $(document).ready(function () {
                         }
 
                         if (nilai >= 1) {
-                            $("#per_b1").removeClass("bg-green").addClass("bg-red");
+                            $("#per_b1").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_b1").removeClass("bg-red").addClass("bg-default");
+                            $("#per_b1").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
 
                         if (nilai >= 2) {
-                            $("#per_b2").removeClass("bg-green").addClass("bg-red");
+                            $("#per_b2").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_b2").removeClass("bg-red").addClass("bg-default");
+                            $("#per_b2").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
 
                         if (nilai >= 3 && nilai % 3 === 0) {
-                            $("#per_b3").removeClass("bg-green").addClass("bg-red");
+                            $("#per_b3").attr("src", base_url + "/dist/img/PeringatanMerah.png");
                         } else {
-                            $("#per_b3").removeClass("bg-red").addClass("bg-default");
+                            $("#per_b3").attr("src", base_url + "/dist/img/Peringatan.png");
                         }
                     }
                 }
@@ -378,19 +371,6 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 let nilai = data.nilai; // Mengambil nilai dari properti 'nilai' dalam objek
-                // let status1 = $("#per_m1").attr("status");
-                // let status2 = $("#per_m2").attr("status");
-                // let status3 = $("#per_m3").attr("status");
-                // if (status1 == "on") {
-                //     $("#nilaiMerah").text(nilai - 5);
-                // } else if (status2 == "on"){
-                //     $("#nilaiMerah").text(nilai - 10);
-                //     console.log(15)
-                // } else if (status3 == "on") {
-                //     $("#nilaiMerah").text(nilai - 15);
-                // } else {
-                //     $("#nilaiMerah").text(nilai);
-                // }   
                 $("#nilaiMerah").text(nilai);
             },
         });
@@ -525,8 +505,6 @@ $(document).ready(function () {
                 } else {
                     $("#getDataVoteB").html(html);
                 }
-
-                // $("#getDataVote").html(html);
                 
             },
         });

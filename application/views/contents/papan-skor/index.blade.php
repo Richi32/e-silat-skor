@@ -90,10 +90,10 @@
                     <table style="width: 100%">
                       <tr>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Binaan1.png" alt="Binaan1.png" id="bin_m1" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Binaan1.png" alt="Binaan1.png" id="bin_m1" width="50" height="50" />
                         </td>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Binaan2.png" alt="Binaan2.png" id="bin_m2" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Binaan2.png" alt="Binaan2.png" id="bin_m2" width="50" height="50" />
                         </td>
                       </tr>
                     </table>
@@ -124,10 +124,10 @@
                     <table style="width: 100%">
                       <tr>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Binaan1.png" alt="Binaan1.png" id="bin_b1" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Binaan1.png" alt="Binaan1.png" id="bin_b1" width="50" height="50" />
                         </td>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Binaan2.png" alt="Binaan2.png" id="bin_b2" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Binaan2.png" alt="Binaan2.png" id="bin_b2" width="50" height="50" />
                         </td>
                       </tr>
                     </table>
@@ -140,10 +140,10 @@
                     <table style="width: 100%">
                       <tr>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Teguran1.png" alt="Teguran1.png" id="teg_m1" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Teguran1.png" alt="Teguran1.png" id="teg_m1" width="50" height="50" />
                         </td>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Teguran2.png" alt="Teguran2.png" id="teg_m2" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Teguran2.png" alt="Teguran2.png" id="teg_m2" width="50" height="50" />
                         </td>
                       </tr>
                     </table>
@@ -154,10 +154,10 @@
                     <table style="width: 100%">
                       <tr>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Teguran1.png" alt="Teguran1.png" id="teg_b1" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Teguran1.png" alt="Teguran1.png" id="teg_b1" width="50" height="50" />
                         </td>
                         <td class="text-center">
-                          <img src="<?= base_url() ?>dist/img/Teguran2.png" alt="Teguran2.png" id="teg_b2" width="50" height="50" />
+                          <img src="{{base_url()}}dist/img/Teguran2.png" alt="Teguran2.png" id="teg_b2" width="50" height="50" />
                         </td>
                       </tr>
                     </table>
@@ -167,24 +167,24 @@
                 <tr>
                   <!-- tim merah -->
                   <td>
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan1.png" id="per_m1" nilai_per="5" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan1.png" id="per_m1" nilai_per="5" status="" width="30" height="50" />
                   </td>
                   <td>
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan2.png" id="per_m2" nilai_per="10" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan2.png" id="per_m2" nilai_per="10" status="" width="30" height="50" />
                   </td>
                   <td>
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan3.png" id="per_m3" nilai_per="15" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan3.png" id="per_m3" nilai_per="15" status="" width="30" height="50" />
                   </td>
                   <!-- end tim merah -->
                   <!-- tim biru -->
                   <td class="text-right">
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan1.png" id="per_b1" nilai_per="5" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan1.png" id="per_b1" nilai_per="5" status="" width="30" height="50" />
                   </td>
                   <td class="text-right">
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan2.png" id="per_b2" nilai_per="10" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan2.png" id="per_b2" nilai_per="10" status="" width="30" height="50" />
                   </td>
                   <td class="text-right">
-                    <img src="<?= base_url() ?>dist/img/Peringatan.png" alt="Peringatan3.png" id="per_b3" nilai_per="15" status="" width="30" height="50" />
+                    <img src="{{base_url()}}dist/img/Peringatan.png" alt="Peringatan3.png" id="per_b3" nilai_per="15" status="" width="30" height="50" />
                   </td>
                   <!-- end tim biru -->
                 </tr>
@@ -199,14 +199,14 @@
                     <td class="col-1">
                       <div class="row text-center">
                         <div>
-                          <img src="<?= base_url() ?>dist/img/Tinju.png" alt="TinjuM.png" width="30" height="30" />
+                          <img src="{{base_url()}}dist/img/Tinju.png" alt="TinjuM.png" width="30" height="30" />
                         </div>
                       </div>
                     </td>
                     <td class="col-1">
                       <div class="row text-center">
                         <div>
-                          <img src="<?= base_url() ?>dist/img/Tinju.png" alt="TinjuB.png" width="30" height="30" />
+                          <img src="{{base_url()}}dist/img/Tinju.png" alt="TinjuB.png" width="30" height="30" />
                         </div>
                       </div>
                     </td>
@@ -221,14 +221,14 @@
                     <td>
                       <div class="row text-center">
                         <div>
-                          <img src="<?= base_url() ?>dist/img/Tendang.png" alt="TendangM.png" width="30" height="30" />
+                          <img src="{{base_url()}}dist/img/Tendang.png" alt="TendangM.png" width="30" height="30" />
                         </div>
                       </div>
                     </td>
                     <td>
                       <div class="row text-center">
                         <div>
-                          <img src="<?= base_url() ?>dist/img/Tendang.png" alt="TendangB.png" width="30" height="30" />
+                          <img src="{{base_url()}}dist/img/Tendang.png" alt="TendangB.png" width="30" height="30" />
                         </div>
                       </div>
                     </td>
@@ -252,7 +252,7 @@
 
 @section('js')
 
-<script src="<?= base_url() ?>assets/pertandingan/papan-skor.js"></script>
+<script src="{{base_url()}}assets/pertandingan/papan-skor.js"></script>
 
 {{-- untuk timer  --}}
 <script>
@@ -273,7 +273,7 @@
           }
       };
 
-      xhr.open('GET', '<?= base_url() ?>application/views/contents/papan-skor/page_b_timer.php', true);
+      xhr.open('GET', '{{base_url()}}application/views/contents/papan-skor/page_b_timer.php', true);
       xhr.send();
   }
 
