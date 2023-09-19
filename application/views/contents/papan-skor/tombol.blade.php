@@ -57,7 +57,7 @@
   // Function to send the current timer value to Page A
   function sendTimerValue(time) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '<?= base_url() ?>application/views/contents/papan-skor/page_a_timer.php', true);
+    xhr.open('POST', '<?= base_url() ?>timer/getTimerA', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send('time=' + encodeURIComponent(time));
   }
@@ -133,7 +133,7 @@
       }
     };
 
-    xhr.open('GET', '<?= base_url() ?>application/views/contents/papan-skor/page_b_timer.php', true);
+    xhr.open('GET', '<?= base_url() ?>timer/getTimerB', true);
 	  xhr.send();
   }
 

@@ -273,7 +273,7 @@
           }
       };
 
-      xhr.open('GET', '{{base_url()}}application/views/contents/papan-skor/page_b_timer.php', true);
+      xhr.open('GET', '<?= base_url() ?>timer/getTimerB', true);
       xhr.send();
   }
 

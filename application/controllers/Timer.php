@@ -16,4 +16,11 @@ class Timer extends CI_Controller {
 		view('contents.papan-skor.tombol');
 	}	
 
+	public function getTimerA(){
+		$this->load->view('contents/papan-skor/page_a_timer');
+	}
+
+	public function getTimerB(){
+		return $this->load->view('contents/papan-skor/page_b_timer');
+	}
 }
