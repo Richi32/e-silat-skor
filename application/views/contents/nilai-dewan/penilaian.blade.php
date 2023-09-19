@@ -93,10 +93,12 @@
                         <input type="hidden" name="per_m0" id="per_m0" value="0">
                         <input type="hidden" name="per_m1" id="per_m1" value="0">
                         <input type="hidden" name="per_m2" id="per_m2" value="0">
+                        <input type="hidden" name="per_m3" id="per_m3" value="0">
 
                         <input type="hidden" name="per_b0" id="per_b0" value="0">
                         <input type="hidden" name="per_b1" id="per_b1" value="0">
                         <input type="hidden" name="per_b2" id="per_b2" value="0">
+                        <input type="hidden" name="per_b3" id="per_b3" value="0">
                         <div class="card-body table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -141,47 +143,44 @@
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
                             <button class="button btn btn-flat btn-danger btn-lg"
                             id="teguran_m" atlitId="">
-                                Teguran
+                                Teguran 1
                             </button>
                             <button class="button btn btn-flat btn-danger btn-lg"
-                            id="peringatan_m" atlitId=""
+                            id="teguran2_m" atlitId=""
                             style="margin-top: 1.5rem;">
-                                Peringatan
+                                Teguran 2
                             </button>
                         </div>
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
-                            <button class="button btn btn-flat btn-success btn-lg" data-toggle="modal"
-                                data-target="#modal-merah">
-                                Vote
+                            <button class="button btn btn-flat btn-danger btn-lg" 
+                            id="peringatan_m" atlitId="">
+                                Peringatan
                             </button>
-                            <button class="button btn btn-flat btn-warning btn-lg"
-                            id="hapus_m" atlitId=""
-                            style="margin-top: 1.5rem;">
-                                Hapus
+                            <button class="button btn btn-flat btn-success btn-lg" 
+                            data-toggle="modal" data-target="#modal-merah" style="margin-top: 1.5rem;">
+                                Vote
                             </button>
                         </div>
                     </div>
                     <div class="col-sm-6 text-right">
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
-                            <button class="button btn btn-flat btn-success btn-lg" data-toggle="modal"
-                                data-target="#modal-biru">
-                                Vote
+                            <button class="button btn btn-flat bg-blue btn-lg" id="peringatan_b" atlitId="">
+                                Peringatan
                             </button>
-                            <button class="button btn btn-flat btn-warning btn-lg"
-                            id="hapus_b" atlitId=""
-                            style="margin-top: 1.5rem;">
-                                Hapus
+                            <button class="button btn btn-flat btn-success btn-lg" 
+                            data-toggle="modal" data-target="#modal-biru" style="margin-top: 1.5rem;">
+                                Vote
                             </button>
                         </div>
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
                             <button class="button btn btn-flat bg-blue btn-lg"
                             id="teguran_b" atlitId="">
-                                Teguran
+                                Teguran 1
                             </button>
                             <button class="button btn btn-flat bg-blue btn-lg"
-                            id="peringatan_b" atlitId=""
+                            id="teguran2_b" atlitId=""
                             style="margin-top: 1.5rem;">
-                                Peringatan
+                                Teguran 2
                             </button>
                         </div>
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
@@ -193,6 +192,26 @@
                             id="binaan_b" atlitId=""
                             style="margin-top: 1.5rem;">
                                 Binaan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="btn-group-vertical" style="margin-right: 1.5rem;">
+                            <button class="button btn btn-flat btn-warning btn-lg"
+                            id="hapus_m" atlitId=""
+                            style="margin-top: 1.5rem;">
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <div class="btn-group-vertical" style="margin-right: 1.5rem;">
+                            <button class="button btn btn-flat btn-warning btn-lg"
+                            id="hapus_b" atlitId=""
+                            style="margin-top: 1.5rem;">
+                                Hapus
                             </button>
                         </div>
                     </div>

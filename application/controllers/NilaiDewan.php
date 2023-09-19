@@ -48,12 +48,15 @@ class NilaiDewan extends CI_Controller {
 		$ronde_id = $this->input->post('ronde_id');
 		$users_id = $_SESSION['id_user'];
 		$nilai_t_id = $this->input->post('nilai_t_id');
+		$nilai_t2_id = $this->input->post('nilai_t2_id');
 		$nilai_p_id = $this->input->post('nilai_p_id');
 		$data_t = $this->NilaiDewanModel->getNilai($atlit_id, $ronde_id, $users_id, $nilai_t_id);
+		$data_t2 = $this->NilaiDewanModel->getNilai($atlit_id, $ronde_id, $users_id, $nilai_t2_id);
 		$data_p = $this->NilaiDewanModel->getNilai($atlit_id, $ronde_id, $users_id, $nilai_p_id);
 		$nilai_t = isset($data_t[0]->nilai) ? $data_t[0]->nilai : null;
+		$nilai_t2 = isset($data_t2[0]->nilai) ? $data_t2[0]->nilai : null;
 		$nilai_p = isset($data_p[0]->nilai) ? $data_p[0]->nilai : null;
-		$hukuman = $nilai_t + $nilai_p;
+		$hukuman = $nilai_t + $nilai_t2 + $nilai_p;
 
 		$data = array(
 			'nilai' => $hukuman
@@ -76,6 +79,16 @@ class NilaiDewan extends CI_Controller {
 		$users_id = $_SESSION['id_user'];
 		$nilai_id = $this->input->post('nilai_id');
 		$data = $this->NilaiDewanModel->getJatuhan($atlit_id, $ronde_id, $users_id, $nilai_id);
+		echo json_encode($data);
+	}
+
+	public function tampilNilaiTeguran(){
+		$atlit_id = $this->input->post('atlit_id');
+		$ronde_id = $this->input->post('ronde_id');
+		$users_id = $_SESSION['id_user'];
+		$nilai_id = $this->input->post('nilai_id');
+		$nilai2_id = $this->input->post('nilai2_id');
+		$data = $this->NilaiDewanModel->getTeguran($atlit_id, $ronde_id, $users_id, $nilai_id, $nilai2_id);
 		echo json_encode($data);
 	}
 

@@ -123,6 +123,10 @@ $(document).ready(function () {
 		getData();
 	});
 
+	$(document).on("click", "#refresh", function () {
+		getData()
+	});
+
 	function getData() {
 		let queryString = window.location.search;
 		let urlParams = new URLSearchParams(queryString);
@@ -159,9 +163,11 @@ $(document).ready(function () {
 
 					var tim_merah_id = data[i].tim_merah_id;
 					var tim_biru_id = data[i].tim_biru_id;
-					setInterval(function () {
-						getRonde(id, rondeId, tim_merah_id, tim_biru_id);
-					}, 1000);
+					// setInterval(function () {
+					// 	getRonde(id, rondeId, tim_merah_id, tim_biru_id);
+					// }, 5000);
+
+					getRonde(id, rondeId, tim_merah_id, tim_biru_id);
 
 					if (data[i].status_ronde == "nonaktif") {
 						$("#tombol").hide();

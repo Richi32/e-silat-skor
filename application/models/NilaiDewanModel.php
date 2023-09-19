@@ -94,6 +94,34 @@ class NilaiDewanModel extends CI_Model {
         return $data->result();
     }
 
+    public function getTeguran($atlit_id, $ronde_id, $users_id, $nilai_id, $nilai2_id){
+        $data = $this->db->query('SELECT
+                                    penilaian.id,
+                                    ronde.ronde,
+                                    users.nama AS nama_user,
+                                    atlit.nama AS nama_atlit,
+                                    GROUP_CONCAT( nilai.nilai_hitung SEPARATOR " " ) AS nilai
+                                FROM
+                                    penilaian
+                                    JOIN ronde ON penilaian.ronde_id = ronde.id
+                                    JOIN users ON penilaian.users_id = users.id
+                                    JOIN atlit ON penilaian.atlit_id = atlit.id
+                                    JOIN nilai ON penilaian.nilai_id = nilai.id
+                                WHERE
+                                    atlit.id = "'.$atlit_id.'"
+                                    AND ronde.id = "'.$ronde_id.'"
+                                    AND users.id = "'.$users_id.'"
+                                    AND penilaian.nilai_id = "'.$nilai_id.'"
+                                    OR atlit.id = "'.$atlit_id.'"
+                                    AND ronde.id = "'.$ronde_id.'"
+                                    AND users.id = "'.$users_id.'"
+                                    AND penilaian.nilai_id = "'.$nilai2_id.'"
+                                GROUP BY
+                                    atlit.id
+        ');
+        return $data->result();
+    }
+
     public function getNilai($atlit_id, $ronde_id, $users_id, $nilai_id){
         $data = $this->db->query('SELECT
                                     penilaian.id,

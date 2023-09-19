@@ -46,6 +46,13 @@ class PapanSkor extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function tampilDataHukumanTeguran(){
+		$atlit_id = $this->input->post('atlit_id');
+		$ronde_id = $this->input->post('ronde_id');
+		$data = $this->PapanskorModel->getCountHukumanTeguran($atlit_id, $ronde_id);
+		echo json_encode($data);
+	}
+
 	public function tampilDataNilaiSkor(){
 		$atlit_id = $this->input->post('atlit_id');
 		$ronde_id = $this->input->post('ronde_id');
@@ -57,7 +64,8 @@ class PapanSkor extends CI_Controller {
 		$id_tendangan = 2;
 
 		$data_jatuhan = $this->PapanskorModel->getNilaiDewan($atlit_id, $partai_id, $id_jatuhan);
-		$data_teguran = $this->PapanskorModel->getNilaiDewan($atlit_id, $partai_id, $id_teguran);
+		// $data_teguran = $this->PapanskorModel->getNilaiDewan($atlit_id, $partai_id, $id_teguran);
+		$data_teguran = $this->PapanskorModel->getNilaiTeguranDewan($atlit_id, $partai_id);
 		$data_peringatan = $this->PapanskorModel->getNilaiPeringatanDewan($atlit_id, $partai_id, $id_peringatan);
 
 		$data_pukulan = $this->PapanskorModel->getNilaiJuri($atlit_id, $partai_id, $id_pukulan);
@@ -87,6 +95,12 @@ class PapanSkor extends CI_Controller {
 
 		foreach ($data_tendangan as $row) {
 			$total_nilai_tendangan += $row->total_nilai;
+		}
+
+		if($total_nilai_peringatan == 10){
+			$total_nilai_peringatan = 15;
+		}elseif($total_nilai_peringatan == 15){
+			$total_nilai_peringatan = 30;
 		}
 
 		$total_nilai = $total_nilai_pukulan + $total_nilai_tendangan + $total_nilai_jatuhan - $total_nilai_teguran - $total_nilai_peringatan;

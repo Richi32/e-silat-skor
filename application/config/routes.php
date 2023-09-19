@@ -42,6 +42,7 @@ $route['datarondedewan'] = 'NilaiDewan/tampilRonde';
 $route['datanilaiatlitdewan'] = 'NilaiDewan/tampilNilaiAtlitDewan';
 $route['datanilaiperingatandewan'] = 'NilaiDewan/tampilNilaiPeringatan';
 $route['datanilaijatuhandewan'] = 'NilaiDewan/tampilNilaiJatuhan';
+$route['datanilaitegurandewan'] = 'NilaiDewan/tampilNilaiTeguran';
 $route['datanilaihukumandewan'] = 'NilaiDewan/tampilNilaiHukuman';
 
 $route['tambahnilaidewan'] = 'NilaiDewan/tambahNilai';
@@ -55,6 +56,7 @@ $route['datanilaiskor'] = 'PapanSkor/tampilData';
 $route['datarondeskor'] = 'PapanSkor/tampilRonde';
 $route['datahukumanskor'] = 'PapanSkor/tampilDataHukuman';
 $route['dataperingatanskor'] = 'PapanSkor/tampilDataHukumanPeringatan';
+$route['datateguranskor'] = 'PapanSkor/tampilDataHukumanTeguran';
 $route['datatotalskor'] = 'PapanSkor/tampilDataNilaiSkor';
 $route['datatomboljuriskor'] = 'PapanSkor/tampilTombol';
 $route['datavoteskor'] = 'PapanSkor/tampilDataVote';

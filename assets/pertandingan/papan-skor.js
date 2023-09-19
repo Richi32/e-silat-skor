@@ -200,11 +200,10 @@ $(document).ready(function () {
     function updateIconTeguranMerah(atlit_id, ronde_id) {
         $.ajax({
             type: "POST",
-            url: "datahukumanskor",
+            url: "datateguranskor",
             data: {
                 ronde_id: ronde_id,
-                atlit_id: atlit_id,
-                nilai_id: 5
+                atlit_id: atlit_id
             },
             dataType: "json",
             success: function (data) {
@@ -224,7 +223,7 @@ $(document).ready(function () {
                             $("#teg_m1").attr("src", base_url + "/dist/img/Teguran1.png");
                         }
 
-                        if (nilai >= 2 && nilai % 2 === 0) {
+                        if (nilai >= 2) {
                             $("#teg_m2").attr("src", base_url + "/dist/img/TeguranMerah2.png");
                         } else {
                             $("#teg_m2").attr("src", base_url + "/dist/img/Teguran2.png");
@@ -238,11 +237,10 @@ $(document).ready(function () {
     function updateIconTeguranBiru(atlit_id, ronde_id) {
         $.ajax({
             type: "POST",
-            url: "datahukumanskor",
+            url: "datateguranskor",
             data: {
                 ronde_id: ronde_id,
-                atlit_id: atlit_id,
-                nilai_id: 5
+                atlit_id: atlit_id
             },
             dataType: "json",
             success: function (data) {
@@ -262,7 +260,7 @@ $(document).ready(function () {
                             $("#teg_b1").attr("src", base_url + "/dist/img/Teguran1.png");
                         }
 
-                        if (nilai >= 2 && nilai % 2 === 0) {
+                        if (nilai >= 2) {
                             $("#teg_b2").attr("src", base_url + "/dist/img/TeguranMerah2.png");
                         } else {
                             $("#teg_b2").attr("src", base_url + "/dist/img/Teguran2.png");

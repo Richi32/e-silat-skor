@@ -64,6 +64,26 @@ $(document).ready(function () {
 		tambahNilai(rondeId, atlitId, nilaiId, tombol);
 	});
 
+	$(document).on("click", "#teguran2_m", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 7;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
+	$(document).on("click", "#teguran2_b", function () {
+		let newQueryString = new URLSearchParams(window.location.search);
+		let rondeId = newQueryString.get('ronde-id');
+		let atlitId = $(this).attr("atlitId");
+		let nilaiId = 7;
+
+		let tombol = $(this).attr("tombol");
+		tambahNilai(rondeId, atlitId, nilaiId, tombol);
+	});
+
 	$(document).on("click", "#peringatan_m", function () {
 		let newQueryString = new URLSearchParams(window.location.search);
 		let rondeId = newQueryString.get('ronde-id');
@@ -169,12 +189,14 @@ $(document).ready(function () {
 					$("#jatuhan_m").attr("atlitId", data[i].tim_merah_id);
 					$("#binaan_m").attr("atlitId", data[i].tim_merah_id);
 					$("#teguran_m").attr("atlitId", data[i].tim_merah_id);
+					$("#teguran2_m").attr("atlitId", data[i].tim_merah_id);
 					$("#peringatan_m").attr("atlitId", data[i].tim_merah_id);
 					$("#hapus_m").attr("atlitId", data[i].tim_merah_id);
 
 					$("#jatuhan_b").attr("atlitId", data[i].tim_biru_id);
 					$("#binaan_b").attr("atlitId", data[i].tim_biru_id);
 					$("#teguran_b").attr("atlitId", data[i].tim_biru_id);
+					$("#teguran2_b").attr("atlitId", data[i].tim_biru_id);
 					$("#peringatan_b").attr("atlitId", data[i].tim_biru_id);
 					$("#hapus_b").attr("atlitId", data[i].tim_biru_id);
 
@@ -184,6 +206,9 @@ $(document).ready(function () {
 					$("#vote_bb").attr("atlitId", data[i].tim_biru_id);
 
 					getRonde(id, rondeId, data[i].tim_merah_id, data[i].tim_biru_id);
+
+					chekTeguranMerahButton(rondeId, data[i].tim_merah_id);
+					chekTeguranBiruButton(rondeId, data[i].tim_biru_id);
 
 
 					if (data[i].status_ronde == "nonaktif") {
@@ -314,29 +339,103 @@ $(document).ready(function () {
 			success: function (data) {
 				for (i = 0; i < data.length; i++) {
 					// console.log("merah "+index)
+					nilai = parseInt(data[i].nilai);
+					nilai_i = nilai / 5;
+					if (nilai_i == 1) {
+						nilaiPeringatan = nilai;
+						// console.log("nilai 1 = " + nilai);
+					} else if (nilai_i == 2) {
+						nilaiPeringatan = nilai + 5;
+						// console.log("nilai 2 = " + nilaiPeringatan)
+					}else if (nilai_i == 3) {
+						nilaiPeringatan = nilai + 15;
+						$("#peringatan_m").prop("disabled", true);
+						// console.log("nilai 3 = " + nilaiPeringatan)
+					} else {
+						console.log("nilai diskualifikasi = " + 0);
+					}
+
 					if (index == 0) {
-						$("#per_m1").val(data[i].nilai);
-						$("#peringatan_merah_" + index).text("-" + data[i].nilai);
-						// console.log(data[i].nilai);
+						$("#per_m1").val(nilaiPeringatan);
+						$("#peringatan_merah_" + index).text("-" + nilaiPeringatan);
 					} 
 					if (index == 1) {
 						nilaiM2 = $("#per_m1").val();
-						sumVarM2 = parseInt(nilaiM2) + parseInt(data[i].nilai);
-						$("#per_m2").val(sumVarM2);
-						$("#peringatan_merah_" + index).text("-" + sumVarM2);
-						// console.log(data[i].nilai);
-					} 
-					if (index == 2) {
-						nilaiM3 = $("#per_m2").val();
-						if (nilaiM3 != 0) {
-							nilai = $("#per_m2").val();
+						nilaiM2_i = parseInt(nilaiM2);
+						if (nilaiM2_i == 0) {
+							$("#per_m2").val(nilaiPeringatan);
+							$("#peringatan_merah_" + index).text("-" + nilaiPeringatan);
 						} else {
-							nilai = $("#per_m1").val();
+							sumVarM2 = nilaiM2_i + nilaiPeringatan;
+							cek_nilai1 = sumVarM2 / 5;
+
+							if (cek_nilai1 == 1) {
+								nilaiM2_oke = sumVarM2;
+							} else if (cek_nilai1 == 2) {
+								nilaiM2_oke = sumVarM2 + 5;
+							} else if (cek_nilai1 == 3) {
+								nilaiM2_oke = sumVarM2 + 15;
+							} else if (cek_nilai1 == 4) {
+								nilaiM2_oke = sumVarM2 + 10;
+								$("#peringatan_m").prop("disabled", true);
+							}
+
+							$("#per_m2").val(nilaiM2_oke);
+
+							$("#peringatan_merah_" + index).text("-" + nilaiM2_oke);
 						}
 						
-						sumVarM3 = parseInt(nilai) + parseInt(data[i].nilai);
-						// console.log(sumVarM3)
-						$("#peringatan_merah_" + index).text("-" + sumVarM3);
+						// console.log("ronde 2 = " + nilaiM2);
+					} 
+					if (index == 2) {
+						nilaiM1 = $("#per_m1").val();
+						nilaiM2 = $("#per_m2").val();
+						nilaiM3 = $("#per_m3").val();
+
+						if (nilaiM1 == 0 && nilaiM2 == 0) {
+							$("#per_m3").val(nilaiPeringatan);
+							$("#peringatan_merah_" + index).text("-" + nilaiPeringatan);
+						} else if (nilaiM2 != 0) {
+							nilai = parseInt(nilaiM2);
+
+							sumVarM2 = nilai + nilaiPeringatan;
+							cek_nilai1 = sumVarM2 / 5;
+
+							if (cek_nilai1 == 1) {
+								nilaiM2_oke = sumVarM2;
+							} else if (cek_nilai1 == 2) {
+								nilaiM2_oke = sumVarM2 + 5;
+							} else if (cek_nilai1 == 3) {
+								nilaiM2_oke = sumVarM2 + 15;
+							} else if (cek_nilai1 == 4) {
+								nilaiM2_oke = sumVarM2 + 10;
+								$("#peringatan_m").prop("disabled", true);
+							}
+
+							$("#per_m3").val(nilaiM2_oke);
+
+							$("#peringatan_merah_" + index).text("-" + nilaiM2_oke);
+						} else if (nilaiM1 != 0) {
+							nilai = parseInt(nilaiM1);
+
+							sumVarM2 = nilai + nilaiPeringatan;
+							cek_nilai1 = sumVarM2 / 5;
+
+							if (cek_nilai1 == 1) {
+								nilaiM2_oke = sumVarM2;
+							} else if (cek_nilai1 == 2) {
+								nilaiM2_oke = sumVarM2 + 5;
+							} else if (cek_nilai1 == 3) {
+								nilaiM2_oke = sumVarM2 + 15;
+							} else if (cek_nilai1 == 4) {
+								nilaiM2_oke = sumVarM2 + 10;
+								$("#peringatan_m").prop("disabled", true);
+							}
+
+							$("#per_m3").val(nilaiM2_oke);
+
+							$("#peringatan_merah_" + index).text("-" + nilaiM2_oke);
+						}
 					}
 				}
 			},
@@ -357,30 +456,104 @@ $(document).ready(function () {
 			success: function (data) {
 				let i;
 				for (i = 0; i < data.length; i++) {
-					// console.log("biru " + index)
+					// console.log("merah "+index)
+					nilai = parseInt(data[i].nilai);
+					nilai_i = nilai / 5;
+					if (nilai_i == 1) {
+						nilaiPeringatan = nilai;
+						// console.log("nilai 1 = " + nilai);
+					} else if (nilai_i == 2) {
+						nilaiPeringatan = nilai + 5;
+						// console.log("nilai 2 = " + nilaiPeringatan)
+					} else if (nilai_i == 3) {
+						nilaiPeringatan = nilai + 15;
+						$("#peringatan_b").prop("disabled", true);
+						// console.log("nilai 3 = " + nilaiPeringatan)
+					} else {
+						console.log("nilai diskualifikasi = " + 0);
+					}
+
 					if (index == 0) {
-						$("#per_b1").val(data[i].nilai);
-						$("#peringatan_biru_" + index).text("-" + data[i].nilai);
-						// console.log(data[i].nilai);
+						$("#per_b1").val(nilaiPeringatan);
+						$("#peringatan_biru_" + index).text("-" + nilaiPeringatan);
 					}
 					if (index == 1) {
-						nilaiM2 = $("#per_b1").val();
-						sumVarM2 = parseInt(nilaiM2) + parseInt(data[i].nilai);
-						$("#per_b2").val(sumVarM2);
-						$("#peringatan_biru_" + index).text("-" + sumVarM2);
-						// console.log(data[i].nilai);
-					}
-					if (index == 2) {
-						nilaiM3 = $("#per_b2").val();
-						if (nilaiM3 != 0) {
-							nilai = $("#per_b2").val();
+						nilaiB2 = $("#per_b1").val();
+						nilaiB2_i = parseInt(nilaiB2);
+						if (nilaiB2_i == 0) {
+							$("#per_b2").val(nilaiPeringatan);
+							$("#peringatan_biru_" + index).text("-" + nilaiPeringatan);
 						} else {
-							nilai = $("#per_b1").val();
+							sumVarB2 = nilaiB2_i + nilaiPeringatan;
+							cek_nilai = sumVarB2 / 5;
+
+							if (cek_nilai == 1) {
+								nilaiB2_oke = sumVarB2;
+							} else if (cek_nilai == 2) {
+								nilaiB2_oke = sumVarB2 + 5;
+							} else if (cek_nilai == 3) {
+								nilaiB2_oke = sumVarB2 + 15;
+							} else if (cek_nilai == 4) {
+								nilaiB2_oke = sumVarB2 + 10;
+								$("#peringatan_b").prop("disabled", true);
+							}
+
+							$("#per_b2").val(nilaiB2_oke);
+
+							$("#peringatan_biru_" + index).text("-" + nilaiB2_oke);
 						}
 
-						sumVarM3 = parseInt(nilai) + parseInt(data[i].nilai);
-						// console.log(sumVarM3)
-						$("#peringatan_biru_" + index).text("-" + sumVarM3);
+						// console.log("ronde 2 = " + nilaiB2);
+					}
+					if (index == 2) {
+						nilaiB1 = $("#per_b1").val();
+						nilaiB2 = $("#per_b2").val();
+						nilaiB3 = $("#per_b3").val();
+
+						if (nilaiB1 == 0 && nilaiB2 == 0) {
+							$("#per_b3").val(nilaiPeringatan);
+							$("#peringatan_biru_" + index).text("-" + nilaiPeringatan);
+						} else if (nilaiB2 != 0) {
+							nilai = parseInt(nilaiB2);
+
+							sumVarB2 = nilai + nilaiPeringatan;
+							cek_nilai = sumVarB2 / 5;
+
+							if (cek_nilai == 1) {
+								nilaiB2_oke = sumVarB2;
+							} else if (cek_nilai == 2) {
+								nilaiB2_oke = sumVarB2 + 5;
+							} else if (cek_nilai == 3) {
+								nilaiB2_oke = sumVarB2 + 15;
+							} else if (cek_nilai == 4) {
+								nilaiB2_oke = sumVarB2 + 10;
+								$("#peringatan_b").prop("disabled", true);
+							}
+
+							$("#per_b3").val(nilaiB2_oke);
+
+							$("#peringatan_biru_" + index).text("-" + nilaiB2_oke);
+						} else if (nilaiB1 != 0) {
+							nilai = parseInt(nilaiB1);
+
+							sumVarB2 = nilai + nilaiPeringatan;
+							cek_nilai = sumVarB2 / 5;
+
+							if (cek_nilai == 1) {
+								nilaiB2_oke = sumVarB2;
+							} else if (cek_nilai == 2) {
+								nilaiB2_oke = sumVarB2 + 5;
+							} else if (cek_nilai == 3) {
+								nilaiB2_oke = sumVarB2 + 15;
+							} else if (cek_nilai == 4) {
+								nilaiB2_oke = sumVarB2 + 10;
+								$("#peringatan_b").prop("disabled", true);
+							}
+
+							$("#per_b3").val(nilaiB2_oke);
+
+							$("#peringatan_biru_" + index).text("-" + nilaiB2_oke);
+						}
 					}
 				}
 			},
@@ -391,19 +564,59 @@ $(document).ready(function () {
 		// console.log(index)
 		$.ajax({
 			type: "POST",
-			url: "datanilaiatlitdewan",
+			url: "datanilaitegurandewan",
 			data: {
 				ronde_id: ronde_id,
 				atlit_id: atlit_id,
-				nilai_id: 5
+				nilai_id: 5,
+				nilai2_id: 7,
 			},
 			dataType: "json",
 			success: function (data) {
 				let i;
 				for (i = 0; i < data.length; i++) {
-					$("#teguran_merah_" + index).text("-" + data[i].nilai);
+					$("#teguran_merah_" + index).text(data[i].nilai);
 					// console.log(data[i].nilai)
-					console.log(i)
+					// console.log(i)
+				}
+			},
+		});
+	}
+
+	function chekTeguranMerahButton(ronde_id, atlit_id) {
+		$.ajax({
+			type: "POST",
+			url: "datateguranskor",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				if (data.length <= 0) {
+					$("#teguran_m").prop("disabled", false);
+					$("#teguran2_m").prop("disabled", false);
+				} else {
+					for (i = 0; i < data.length; i++) {
+						let nilai = 0; // Inisialisasi nilai di luar perulangan
+						if (data.length > 0) {
+							nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+						}
+
+						if (nilai == 1) {
+							$("#teguran_m").prop("disabled", true);
+						} else {
+							$("#teguran_m").prop("disabled", false);
+						}
+
+						if (nilai == 2) {
+							$("#teguran2_m").prop("disabled", true);
+							$("#teguran_m").prop("disabled", false);
+						} else {
+							$("#teguran2_m").prop("disabled", false);
+						}
+					}
 				}
 			},
 		});
@@ -413,19 +626,59 @@ $(document).ready(function () {
 		// console.log(index)
 		$.ajax({
 			type: "POST",
-			url: "datanilaiatlitdewan",
+			url: "datanilaitegurandewan",
 			data: {
 				ronde_id: ronde_id,
 				atlit_id: atlit_id,
-				nilai_id: 5
+				nilai_id: 5,
+				nilai2_id: 7,
 			},
 			dataType: "json",
 			success: function (data) {
 				let i;
 				for (i = 0; i < data.length; i++) {
-					$("#teguran_biru_" + index).text("-" + data[i].nilai);
+					$("#teguran_biru_" + index).text(data[i].nilai);
 					// console.log(data[i].nilai)
-					console.log(i)
+					// console.log(i)
+				}
+			},
+		});
+	}
+
+	function chekTeguranBiruButton(ronde_id, atlit_id) {
+		$.ajax({
+			type: "POST",
+			url: "datateguranskor",
+			data: {
+				ronde_id: ronde_id,
+				atlit_id: atlit_id
+			},
+			dataType: "json",
+			success: function (data) {
+				let i;
+				if (data.length <= 0) {
+					$("#teguran_b").prop("disabled", false);
+					$("#teguran2_b").prop("disabled", false);
+				} else {
+					for (i = 0; i < data.length; i++) {
+						let nilai = 0; // Inisialisasi nilai di luar perulangan
+						if (data.length > 0) {
+							nilai = data[0].nilai; // Ambil nilai hanya jika ada data
+						}
+
+						if (nilai == 1) {
+							$("#teguran_b").prop("disabled", true);
+						} else {
+							$("#teguran_b").prop("disabled", false);
+						}
+
+						if (nilai == 2) {
+							$("#teguran2_b").prop("disabled", true);
+							$("#teguran_b").prop("disabled", false);
+						} else {
+							$("#teguran2_b").prop("disabled", false);
+						}
+					}
 				}
 			},
 		});
@@ -572,6 +825,7 @@ $(document).ready(function () {
 				ronde_id: ronde_id,
 				atlit_id: atlit_id,
 				nilai_t_id: 5,
+				nilai_t2_id: 7,
 				nilai_p_id: 4
 			},
 			dataType: "json",
@@ -591,6 +845,7 @@ $(document).ready(function () {
 				ronde_id: ronde_id,
 				atlit_id: atlit_id,
 				nilai_t_id: 5,
+				nilai_t2_id: 7,
 				nilai_p_id: 4
 			},
 			dataType: "json",

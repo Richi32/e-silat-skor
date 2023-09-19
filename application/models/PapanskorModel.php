@@ -83,6 +83,32 @@ class PapanskorModel extends CI_Model {
         return $data->result();
     }
 
+    public function getCountHukumanTeguran($atlit_id, $ronde_id){
+        $data = $this->db->query('SELECT
+                                    penilaian.id,
+                                    ronde.ronde,
+                                    users.nama AS nama_user,
+                                    atlit.nama AS nama_atlit,
+                                    nilai.nilai
+                                FROM
+                                    penilaian
+                                    JOIN ronde ON penilaian.ronde_id = ronde.id
+                                    JOIN users ON penilaian.users_id = users.id
+                                    JOIN atlit ON penilaian.atlit_id = atlit.id
+                                    JOIN nilai ON penilaian.nilai_id = nilai.id
+                                WHERE
+                                    atlit.id = "'.$atlit_id.'"
+                                    AND ronde.id = "'.$ronde_id.'"
+                                    AND penilaian.nilai_id = "5"
+                                    OR atlit.id = "'.$atlit_id.'"
+                                    AND ronde.id = "'.$ronde_id.'"
+                                    AND penilaian.nilai_id = "7"
+                                ORDER BY penilaian.id DESC
+                                LIMIT 1
+        ');
+        return $data->result();
+    }
+
     public function getNilaiDewan($atlit_id, $ronde_id, $nilai_id){
         $data = $this->db->query('SELECT
                                     p.ronde_id,
@@ -120,6 +146,31 @@ class PapanskorModel extends CI_Model {
                                 GROUP BY
                                     m.partai_id,
                                     p.atlit_id;
+        ');
+        return $data->result();
+    }
+
+    public function getNilaiTeguranDewan($atlit_id, $partai_id){
+        $data = $this->db->query('SELECT
+                                    penilaian.id,
+                                    ronde.ronde,
+                                    users.nama AS nama_user,
+                                    atlit.nama AS nama_atlit,
+                                    SUM(nilai.nilai) as total_nilai
+                                FROM
+                                    penilaian
+                                    JOIN ronde ON penilaian.ronde_id = ronde.id
+                                    JOIN users ON penilaian.users_id = users.id
+                                    JOIN atlit ON penilaian.atlit_id = atlit.id
+                                    JOIN nilai ON penilaian.nilai_id = nilai.id
+                                WHERE
+                                    atlit.id = "'.$atlit_id.'"
+                                    AND ronde.partai_id = "'.$partai_id.'"
+                                    AND penilaian.nilai_id = "5"
+                                    OR atlit.id = "'.$atlit_id.'"
+                                    AND ronde.partai_id = "'.$partai_id.'"
+                                    AND penilaian.nilai_id = "7"
+                                    GROUP BY atlit.id
         ');
         return $data->result();
     }

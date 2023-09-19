@@ -108,7 +108,7 @@
         <div class="fixed-bottom-buttons" id="tombol">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         <div class="btn-group-vertical" style="margin-right: 1.5rem;">
                             <button class="button btn btn-flat btn-danger btn-lg"
                             id="pukulan_m" atlitId="" tombol="puk_jm{{$kode}}" >
@@ -126,7 +126,13 @@
                             Hapus
                         </button>
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <div class="col-sm-2 text-center">
+                        <button class="button btn btn-flat btn-success btn-lg"
+                        id="refresh" atlitId="" style="margin-top: 6.2rem;">
+                            Refresh Data
+                        </button>
+                    </div>
+                    <div class="col-sm-5 text-right">
                         <button class="button btn btn-flat btn-warning btn-lg d-block d-sm-none"
                         id="hapus_b" atlitId=""
                         style="margin-top: 6.2rem;">
