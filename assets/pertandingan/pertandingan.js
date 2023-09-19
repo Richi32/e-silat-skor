@@ -39,8 +39,7 @@ $(document).ready(function () {
 						"<td>" +
 						"Partai : " + data[i].partai + "<br>" +
 						"Arena : " + data[i].arena + "<br>" +
-						"Pertandingan : " + data[i].pertandingan + "<br>" +
-						"Waktu : " + data[i].waktu_pertandingan + " detik" +
+						"Pertandingan : " + data[i].pertandingan +
 						"</td>" +
 						"<td class='text-center' style='vertical-align: middle;'>" +
 						"<a href='papanskor?id=" +
