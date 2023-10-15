@@ -3,6 +3,16 @@
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content" style="background-color: #fff;">
+        <div class="modal modal-warning fade" id="modal-ronde">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title">Ronde akan berganti dalam waktu</h4>
+                        <h2 class="modal-title" id="title_ronde">5</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal modal-primary fade" id="modal-biru" status="close">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -3,6 +3,7 @@ $(document).ready(function () {
     var base_url = window.location.origin;
     setInterval(function () {
         getDataVote();
+        getDataRondecon()
     }, 1000);
 
     function resetBinButtons() {
@@ -504,6 +505,61 @@ $(document).ready(function () {
                     $("#getDataVoteB").html(html);
                 }
                 
+            },
+        });
+    }
+
+    function getDataRondecon() {
+        $.ajax({
+            type: "GET",
+            url: "datarondeconjuri",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                var html = "";
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].id != null) {
+                        $("#title_ronde").text();
+
+                        $("#modal-ronde").modal("show");
+
+                        var rondeId = data[i].ronde_id;
+                        var partaiId = data[i].partai_id;
+                        var id = data[i].id;
+
+                        var waktu = 5;
+                        setInterval(function () {
+                            waktu--;
+                            if (waktu < 0) {
+                                $("#modal-ronde").modal("hide");
+                                updateRondecon(id, rondeId, 'y');
+
+                                let newUrl = window.location.href.split('?')[0] + '?id=' + partaiId + '&ronde-id=' + rondeId;
+                                window.history.pushState({ path: newUrl }, '', newUrl);
+                                location.reload();
+
+                            } else {
+                                document.getElementById("title_ronde").innerHTML = waktu;
+                            }
+                        }, 1000);
+                    }
+                }
+            },
+        });
+    }
+
+    function updateRondecon(id, rondeId, val) {
+        $.ajax({
+            type: "POST",
+            url: "updaterondeconjuri",
+            data: {
+                id: id,
+                rondeId: rondeId,
+                val: val
+            },
+            success: function () {
+                console.log("berhasil pindah ronde");
             },
         });
     }

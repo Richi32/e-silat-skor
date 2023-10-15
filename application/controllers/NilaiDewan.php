@@ -120,6 +120,17 @@ class NilaiDewan extends CI_Controller {
 		return $tambahNilai;
 	}
 
+	public function tambahRondecon(){
+		$ronde_id = $this->input->post('ronde_id');
+		$partai_id = $this->input->post('partai_id');
+		$data = array(
+			'ronde_id'	=> $ronde_id,
+			'partai_id'	=> $partai_id
+		);
+		$tambahRondecon = $this->NilaiDewanModel->simpanData('rondecon', $data);
+		return $tambahRondecon;
+	}
+
 	public function tambahVote(){
 		$nilai_id = $this->input->post('nilai_id');
 		$sudut = $this->input->post('sudut');

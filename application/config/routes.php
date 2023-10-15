@@ -31,6 +31,8 @@ $route['datarondejuri'] = 'NilaiJuri/tampilRonde';
 $route['datanilaiatlitjuri'] = 'NilaiJuri/tampilNilaiAtlitJuri';
 
 $route['tambahnilai'] = 'NilaiJuri/tambahNilai';
+$route['datarondeconjuri'] = 'NilaiJuri/tampilDataRondecon';
+$route['updaterondeconjuri'] = 'NilaiJuri/updateDataRondecon';
 $route['datavotejuri'] = 'NilaiJuri/tampilDataVote';
 $route['updatevotejuri'] = 'NilaiJuri/updateDataVote';
 $route['hapusnilai'] = 'NilaiJuri/hapusNilai';
@@ -46,6 +48,7 @@ $route['datanilaitegurandewan'] = 'NilaiDewan/tampilNilaiTeguran';
 $route['datanilaihukumandewan'] = 'NilaiDewan/tampilNilaiHukuman';
 
 $route['tambahnilaidewan'] = 'NilaiDewan/tambahNilai';
+$route['tambahrondecondewan'] = 'NilaiDewan/tambahRondecon';
 $route['tambahvotedewan'] = 'NilaiDewan/tambahVote';
 $route['datavotedewan'] = 'NilaiDewan/tampilDataVote';
 $route['hasilvotedewan'] = 'NilaiDewan/hasilVote';

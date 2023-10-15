@@ -2,6 +2,7 @@ $(document).ready(function () {
 	getData();
 	setInterval(function () {
 		getDataVote();
+		getDataRondecon()
 	}, 1000);
 	// console.log(id);
 	// console.log(rondeId);
@@ -115,9 +116,10 @@ $(document).ready(function () {
 
 	$(document).on("click", "#ronde_btn", function () {
 		let rondeId = $(this).attr("ronde-id");
+		let partaiId = $(this).attr("partai-id");
 		// console.log(rondeId)
 
-		let newUrl = window.location.href.split('?')[0] + '?id=1&ronde-id=' + rondeId;
+		let newUrl = window.location.href.split('?')[0] + '?id=' + partaiId + '&ronde-id=' + rondeId;
 		window.history.pushState({ path: newUrl }, '', newUrl);
 
 		getData();
@@ -205,7 +207,9 @@ $(document).ready(function () {
 						html +=	"bg-navy";
 					}
 					html +=	
-						"' id='ronde_btn' ronde-id='" +
+						"' id='ronde_btn' partai-id='" +
+						partai_id +
+						"' ronde-id='" +
 						data[i].ronde_id +
 						"' style='cursor: pointer;'>" +
 						"<strong>" +
@@ -282,6 +286,61 @@ $(document).ready(function () {
 			success: function () {
 				updateTombol(tombol);
 				getData();
+			},
+		});
+	}
+
+	function getDataRondecon() {
+		$.ajax({
+			type: "GET",
+			url: "datarondeconjuri",
+			async: false,
+			dataType: "json",
+			success: function (data) {
+				var html = "";
+				var i;
+				for (i = 0; i < data.length; i++) {
+					if (data[i].id != null) {
+						$("#title_ronde").text();
+
+						$("#modal-ronde").modal("show");
+
+						var rondeId = data[i].ronde_id;
+						var partaiId = data[i].partai_id;
+						var id = data[i].id;
+
+						var waktu = 5;
+						setInterval(function () {
+							waktu--;
+							if (waktu < 0) {
+								$("#modal-ronde").modal("hide");
+								updateRondecon(id, rondeId, 'y');
+
+								let newUrl = window.location.href.split('?')[0] + '?id=' + partaiId + '&ronde-id=' + rondeId;
+								window.history.pushState({ path: newUrl }, '', newUrl);
+								location.reload();
+
+							} else {
+								document.getElementById("title_ronde").innerHTML = waktu;
+							}
+						}, 1000);
+					}
+				}
+			},
+		});
+	}
+
+	function updateRondecon(id, rondeId, val) {
+		$.ajax({
+			type: "POST",
+			url: "updaterondeconjuri",
+			data: {
+				id: id,
+				rondeId : rondeId,
+				val: val
+			},
+			success: function () {
+				console.log("berhasil pindah ronde");
 			},
 		});
 	}

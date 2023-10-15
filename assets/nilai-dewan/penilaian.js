@@ -152,12 +152,23 @@ $(document).ready(function () {
 
 	$(document).on("click", "#ronde_btn", function () {
 		let rondeId = $(this).attr("ronde-id");
+		let partaiId = $(this).attr("partai-id");
 		// console.log(rondeId)
 
-		let newUrl = window.location.href.split('?')[0] + '?id=1&ronde-id=' + rondeId;
-		window.history.pushState({ path: newUrl }, '', newUrl);
+		$.ajax({
+			type: "POST",
+			url: "tambahrondecondewan",
+			data: {
+				ronde_id: rondeId,
+				partai_id: partaiId
+			},
+			success: function () {
+				let newUrl = window.location.href.split('?')[0] + '?id=' + partaiId + '&ronde-id=' + rondeId;
+				window.history.pushState({ path: newUrl }, '', newUrl);
 
-		getData();
+				getData();
+			},
+		});
 	});
 
 	function getData() {
@@ -269,7 +280,9 @@ $(document).ready(function () {
 						html +=	"bg-navy";
 					}
 					html +=	
-						"' id='ronde_btn' ronde-id='" +
+						"' id='ronde_btn' partai-id='" +
+						partai_id +
+						"' ronde-id='" +
 						data[i].ronde_id +
 						"' style='cursor: pointer;'>" +
 						"<strong>" +

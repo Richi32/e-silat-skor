@@ -1,10 +1,10 @@
 $(document).ready(function () {
 	getData();
 
-	let table = $('#data').DataTable({
-		responsive: true
-	});
-	new $.fn.dataTable.FixedHeader(table);
+	// let table = $('#data').DataTable({
+	// 	responsive: true
+	// });
+	// new $.fn.dataTable.FixedHeader(table);
 
 	$(document).on("click", "#penjurian", function () {
 		let id = $(this).attr("data-id");
@@ -59,9 +59,19 @@ $(document).ready(function () {
 	}
 
 	function openNewWindows(id, ronde) {
-		let url = "penjuriandewan" + "?id=" + id + "&ronde-id=" + ronde; // Ganti dengan URL yang sesuai
+		$.ajax({
+			type: "POST",
+			url: "tambahrondecondewan",
+			data: {
+				ronde_id: ronde,
+				partai_id: id
+			},
+			success: function () {
+				let url = "penjuriandewan" + "?id=" + id + "&ronde-id=" + ronde; // Ganti dengan URL yang sesuai
 
-		let newTab = window.open(url, "_blank");
-		newTab.focus();
+				let newTab = window.open(url, "_blank");
+				newTab.focus();
+			},
+		});
 	}
 });
